@@ -30,7 +30,7 @@ int main(void) {
    const double amountPaint = wallArea / 350;
    printf("Paint needed: %lf gallons\n", amountPaint);
    
-   // FIXME (3): Calculate and output the number of 1 gallon cans needed to paint the wall, rounded up to nearest integer
+   // Calculate and output the number of 1 gallon cans needed to paint the wall, rounded up to nearest integer
    printf("Cans needed: %.0lf can(s)\n", ceil(amountPaint));
    return 0;
 }
