@@ -1,3 +1,7 @@
+/* 
+    This is the 1st version using random # based on time instead of seedVal user input. 
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
