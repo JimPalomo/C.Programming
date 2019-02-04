@@ -32,26 +32,26 @@
       
    }
    else if (numRolls == 2) {
-   die1 = ((rand() % 6) + 1);
-   die2 = ((rand() % 6) + 1);
-   total = die1 + die2;
-   printf("The two dice have values of %d and %d, for a total of %d\n", die1, die2, total);
+      die1 = ((rand() % 6) + 1);
+      die2 = ((rand() % 6) + 1);
+      total = die1 + die2;
+      printf("The two dice have values of %d and %d, for a total of %d\n", die1, die2, total);
    
    }
    else if (numRolls == 3) {
-   die1 = ((rand() % 6) + 1);
-   die2 = ((rand() % 6) + 1);
-   die3 = ((rand() % 6) + 1);
-   total = die1 + die2 + die3;
-   printf("The three dice have values of %d, %d, and %d, for a total of %d\n", die1, die2, die3, total);   
-   
+      die1 = ((rand() % 6) + 1);
+      die2 = ((rand() % 6) + 1);
+      die3 = ((rand() % 6) + 1);
+      total = die1 + die2 + die3;
+      printf("The three dice have values of %d, %d, and %d, for a total of %d\n", die1, die2, die3, total);   
+      
    }
    else if (numRolls > 3) {
       printf("We can only roll at most 3 dice\n");
    
    }
    else if (numRolls < 3) {
-    printf("Number of dice must be greater than 0\n");  
+      printf("Number of dice must be greater than 0\n");  
    
    }
 
