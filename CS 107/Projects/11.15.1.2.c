@@ -1,4 +1,3 @@
-
 /** -----------------------------------------------
 * This program determines the availability of seats
 * through use of if-statements, pattern recognition, 
