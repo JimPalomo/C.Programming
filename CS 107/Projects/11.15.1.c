@@ -1,5 +1,5 @@
 /* 
-      11.15.1: Project 1a - Finding Patterns in a Seating Chart -- WIP
+      11.15.1: Project 1a - Finding Patterns in a Seating Chart
         
       Checks seat availability according to seating pattern on Zybooks
 
