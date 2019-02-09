@@ -31,74 +31,74 @@
 
    int main () {
    
-   char  userChar; 
-   int   userInt;
+   char  rowLetter; 
+   int   seatNumber;
    int   checkRow = 1;
 
-   printf("Enter the seat row letter: \n");                                                     // Gather's user input for seat row letter
-   scanf(" %c ", &userChar);
+   printf("Enter the seat row letter: \n");                                                                // Gather's user input for seat row letter
+   scanf(" %c ", &rowLetter);
    
-   if (userChar > 'K' || userChar == '@' || userChar == '$') {                                  // Determines validity of row, makes sure user input for row is A-K
+   if (rowLetter > 'K' || rowLetter == '!' || rowLetter == '@' || rowLetter == '#' || rowLetter == '$') {  // Determines validity of row, makes sure user input for row is A-K (also checks for first four symbols on the keyboard).
       printf("Not a valid row!\n");
       checkRow = 0;
    }
    
-   if (checkRow == 1) {                                                                         // Gather's user input for seat number only if the row input is valid (*Note: End bracket for the if-statement is at the end of the code, right before return 0;) 
+   if (checkRow == 1) {                                                                                    // Gather's user input for seat number only if the row input is valid (validity is indicated by checkRow == 1 ; true). (*Note: End bracket for the if-statement is at the end of the code, right before return 0;) 
       printf("Enter the seat number: \n");
-      scanf("%d", &userInt);
+      scanf("%d", &seatNumber);
    
   
-  if (userInt <= 0 || userInt > 16) {                                                           // Validates seat number from user input, makes sure seat number is between 1-16
+  if (seatNumber <= 0 || seatNumber > 16) {                                                                // Validates seat number from user input, makes sure seat number is between 1-16
       printf("Not a valid seat number!\n");  
    }
          
-   else if (userChar == 'A' || userChar == 'D' || userChar == 'J' || userChar == 'G') {         // If row is a valid row & seat number, if-statement initiates scan for A, D, J, or G from user input (userChar) 
+   else if (rowLetter == 'A' || rowLetter == 'D' || rowLetter == 'J' || rowLetter == 'G') {               // If the rowLetter is a valid row, an if-statement initiates for A, D, J, or G from user input (rowLetter) 
       
-      if (userInt%2 == 0) {                                                                     // If-statement determines if seat number is even, signifying unavailability of seats by molular operator (%2). Modular operator is based off of patterns of A, D, J, and G.
-            if (userInt <= 9) {                                                                 // If-statement adds a 0 in front of an integer less than 10, 0 in front of integer represents seat number (ex. A01). 
-               printf("Seat %c0%d is taken!", userChar, userInt);
-            } else {                                                                            // If the user input for seat number is >9, then the 0 is taken off from the inputted integer value
-               printf("Seat %c%d is taken!", userChar, userInt); 
+      if (seatNumber%2 == 0) {                                                                            // If-statement determines if seat number is even, signifying unavailability of seats by molular operator (%2). Modular operator is based off of patterns of A, D, J, and G.
+            if (seatNumber <= 9) {                                                                        // If-statement adds a 0 in front of an integer less than 10. A 0 in front of integer represents a seat number (ex. A01). 
+               printf("Seat %c0%d is taken!", rowLetter, seatNumber);
+            } else {                                                                                      // If the user input for seat number is >9, then the 0 is taken off from the inputted integer value
+               printf("Seat %c%d is taken!", rowLetter, seatNumber); 
             }
       } else {
-            if (userInt <= 9) {                                                                  
-               printf("Seat %c0%d is open!", userChar, userInt);
+            if (seatNumber <= 9) {                                                                  
+               printf("Seat %c0%d is open!", rowLetter, seatNumber);
             } else {
-               printf("Seat %c%d is open!", userChar, userInt);                                 
+               printf("Seat %c%d is open!", rowLetter, seatNumber);                                 
             }
       }
    } 
    
-   else if (userChar == 'B' || userChar == 'E' || userChar == 'H' || userChar == 'K') {         // If-statement initiates scan for B, E, H, or K after scanning for A, D, J, G from user input (userChar)     
+   else if (rowLetter == 'B' || rowLetter == 'E' || rowLetter == 'H' || rowLetter == 'K') {              // If-statement initiates scan for B, E, H, or K only after scanning for A, D, J, G from user input (rowLetter) returns false.    
       
-      if (userInt%3 == 0) {                                                                     // If-statement determines if seat number is divisible by 3, signifying unavailability of seats by molular operator (%3). If the seat number is divisible by 3, then the seat is open. Modular operator is based off of patterns of B, E, H, and K.
-         if (userInt <= 9) {	                                                                           
-               printf("Seat %c0%d is open!", userChar, userInt);
+      if (seatNumber%3 == 0) {                                                                           // If-statement determines if seat number is divisible by 3, signifying unavailability of seats by molular operator (%3). If the seat number is divisible by 3, then the seat is open. Modular operator is based off of patterns of B, E, H, and K.
+         if (seatNumber <= 9) {	                                                                           
+               printf("Seat %c0%d is open!", rowLetter, seatNumber);
             } else {
-               printf("Seat %c%d is open!", userChar, userInt);                                 
+               printf("Seat %c%d is open!", rowLetter, seatNumber);                                 
             }
       } else {
-            if (userInt <= 9) {
-               printf("Seat %c0%d is taken!", userChar, userInt);
+            if (seatNumber <= 9) {
+               printf("Seat %c0%d is taken!", rowLetter, seatNumber);
             } else {
-               printf("Seat %c%d is taken!", userChar, userInt);
+               printf("Seat %c%d is taken!", rowLetter, seatNumber);
             }
       }
    } 
    
-   else if (userChar == 'C' || userChar == 'F' || userChar == 'I') {                            // If-statement initiates scan for C, F, or I after scanning for A, D, J, G, B, E, H, K from user input (userChar)
+   else if (rowLetter == 'C' || rowLetter == 'F' || rowLetter == 'I') {                                // If-statement initiates scan for C, F, or I after scanning for A, D, J, G, B, E, H, K from user input (rowLetter)
          
-      if (userInt == 1 || userInt == 4 || userInt == 5 || userInt == 8 || userInt == 9 || userInt == 12 || userInt == 13 || userInt == 16 ) {         // If user inputs a number specified (1, 4, 5, 8, 9, 12, 13, 16) then the seat is open in rows C, F, and I. 
-         if (userInt <= 9) {
-            printf("Seat %c0%d is open!", userChar, userInt); 
+      if (seatNumber == 1 || seatNumber == 4 || seatNumber == 5 || seatNumber == 8 || seatNumber == 9 || seatNumber == 12 || seatNumber == 13 || seatNumber == 16 ) {         // If user inputs a number specified (1, 4, 5, 8, 9, 12, 13, 16) then the seat is open in rows C, F, and I. 
+         if (seatNumber <= 9) {
+            printf("Seat %c0%d is open!", rowLetter, seatNumber); 
          } else {
-            printf("Seat %c%d is open!", userChar, userInt); 
+            printf("Seat %c%d is open!", rowLetter, seatNumber); 
          }
       } else {
-         if (userInt <= 9) {
-            printf("Seat %c0%d is taken!", userChar, userInt);
+         if (seatNumber <= 9) {
+            printf("Seat %c0%d is taken!", rowLetter, seatNumber);
          } else {
-            printf("Seat %c%d is taken!", userChar, userInt);  
+            printf("Seat %c%d is taken!", rowLetter, seatNumber);  
          }
       }
    }
