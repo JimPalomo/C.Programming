@@ -1,5 +1,3 @@
-// Broken needs fixing
-
 #include <stdio.h>
 
 int main (void) {
@@ -53,45 +51,45 @@ int main (void) {
   printf ("Every-Other Seating Chart: \n");
 
    for (int i = 0; i < numRows; i++) {				// Creates an Every-Other Seating Chart.
-      for (int j = 1; j < numCols + 1; j++) {			// Creates this chart based on every other pattern on each line.
+      for (int j = 1; j < numCols + 1; j++) {
       char seatNum = '@' + numRows;
 
-   if (numRows % 2 == 0) {					// If the number of rows is even, then proceed.
-	  if (i % 2 == 1) {					// If row is even proceed.
-	      if (j % 2 == 1) {					// If column is odd then print an "X" instead of a seat number.
+   if (numRows % 2 == 0) {					// If numRows is even, then proceed.
+	  if (i % 2 == 1) {					// Checks for even rows.
+	      if (j % 2 == 1) {					// If column is odd, then set an "X" instead of a seat number.
 		      printf (" X  ");
 		      seatNum = seatNum - i;
 		      takenSeatsOther++;
-		} else {		            		// If column is not odd; therefore even then print seat number.
+		} else {		            		// If 
 		      printf ("%c%02d ", seatNum - i, j);
 		}
-	 } else {						// If the number of rows is not even and therefore odd, then proceed.  
-	  if (i % 2 == 0) {					// If row is even proceed.
-	      if (j % 2 == 0) {					// If column is odd then print an "X" instead of a seat number.
+	 } else {
+	  if (i % 2 == 0) {				// If row is even, proceed.
+	      if (j % 2 == 0) {				// If column is odd, then set an X instead of a seat number.
 		         printf (" X  ");
 		         seatNum = seatNum - i;
 		         takenSeatsOther++;
-		    } else {					// If column is not even; therefore odd then print seat number.
+		    } else {		// Odd col
                printf ("%c%02d ", seatNum - i, j);
 		    }
 		}
 	}
-   } else {							// If the number of rows is not even; therefore odd then proceed.
-	  if (i % 2 == 0) {					// If row is even then proceed.
-	      if (j % 2 == 1) {					// If column is odd then print an "X" instead of a seat number.
+   } else {
+	  if (i % 2 == 0) {			// Odd row
+	      if (j % 2 == 1) {			// Odd col
 		      printf (" X  ");
 		      seatNum = seatNum - i;
 		      takenSeatsOther++;
-		} else {		         		// If column is not odd; therefore even then print seat number.
+		} else {		         // Even Col
 		      printf ("%c%02d ", seatNum - i, j);
 		}
 	 } else {
-	      if (i % 2 == 1) {					// If row is odd and not even then proceed.
-		      if (j % 2 == 0) {				// If column is even then print an "X" instead of a seat number.
+	      if (i % 2 == 1) {			// Even row
+		      if (j % 2 == 0) {		// Even col
 		         printf (" X  ");
 		         seatNum = seatNum - i;
 		         takenSeatsOther++;
-		    } else {					// If column is not even; therefore odd then print seat number.
+		    } else {			// Odd col
                printf ("%c%02d ", seatNum - i, j);
 		    }
 		}
@@ -99,7 +97,7 @@ int main (void) {
    }
 
 	}
-      seatNum = seatNum + 1;					// After each iteration, sets new row letter (ex. K > J > I > H > F > ...). 
+      seatNum = seatNum + 1;
       printf ("\n");
     }
 
@@ -111,9 +109,8 @@ int main (void) {
    for (int i = 0; i < numRows; i++) {				
       for (int j = 1; j < numCols + 1; j++) {
       char seatNum = '@' + numRows;
-          
-	      // % 3 == 2
-	if (numRows % 3 == 2) {	      
+                 
+	  if (numRows % 3 == 2) {     
 	  if (i % 3 == 0) {			// B 
 	     if (j % 3 == 0)  {
             printf ("%c%02d ", seatNum - i, j);
@@ -142,11 +139,9 @@ int main (void) {
 		   }
 		}
 	 }
-   
-	}
-	      // % 3 == 0
-      } else if (numRows % 3 == 0) {	      
-	  if (i % 3 == 1) {			// A 
+	  } else if (numRows % 3 == 0) {
+	  	// Here
+	  if (i % 3 == 1) {			// B 
 	     if (j % 3 == 0)  {
             printf ("%c%02d ", seatNum - i, j);
 		} else {
@@ -163,7 +158,7 @@ int main (void) {
             seatNum = seatNum - i;
             takenSeatsComplicated++;
 		}
-	    } else {                  // B
+	    } else {                  // A
          if (i % 3 == 2) {
 		   if (j % 2 == 0) {
 		      printf (" X  ");
@@ -173,9 +168,10 @@ int main (void) {
 		      printf ("%c%02d ", seatNum - i, j);
 		   }
 		}
-		  // % 3 == 1
-	 } else if (numRows % 3 == 1) {	      
-	  if (i % 3 == 2) {			// A 
+	 }
+		  // Here 2
+	  } else {
+	  if (i % 3 == 2) {			// B 
 	     if (j % 3 == 0)  {
             printf ("%c%02d ", seatNum - i, j);
 		} else {
@@ -183,8 +179,7 @@ int main (void) {
 		      seatNum = seatNum - i;
 		      takenSeatsComplicated++;
 		}
-	
-		  
+
    } else if (i % 3 == 1) {	      // C
 	      if ((j % 4 == 0) || (j % 4 == 1)) {	
             printf ("%c%02d ", seatNum - i, j);
@@ -193,7 +188,7 @@ int main (void) {
             seatNum = seatNum - i;
             takenSeatsComplicated++;
 		}
-	    } else {                  // B
+	    } else {                  // A
          if (i % 3 == 0) {
 		   if (j % 2 == 0) {
 		      printf (" X  ");
@@ -204,24 +199,13 @@ int main (void) {
 		   }
 		}
 	 }
+	  }
 	      
-	      
-	      
-	      
-	      
-	  }   
-	   
-	   
-	   
-	   
-	   
+	}
       seatNum = seatNum + 1;
       printf ("\n");
     }
-
-	   
-	   
-	   
+    
     printf ("*%d students have seats in this arrangement*", takenSeatsComplicated);
 
 }
