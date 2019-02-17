@@ -7,7 +7,8 @@ int main (void) {
    int numRows;
    int numCols;
    char seatNum;
-   int takenSeats;
+   int takenSeatsOther;
+   int takenSeatsComplicated;
    int check = 1;
 
    printf ("Enter number of rows: \n");
@@ -27,7 +28,7 @@ int main (void) {
       scanf ("%d", &numCols);
       printf ("\n");
 
-   if (numCols >= 30) {
+   if (numCols > 30) {
       printf("Too many seats per rows! Max. number of seats per row is 30. \n");
       check = 0;
 	} else if (numCols <= 0) {
@@ -55,12 +56,12 @@ int main (void) {
       for (int j = 1; j < numCols + 1; j++) {
       char seatNum = '@' + numRows;
 
-
+   if (numRows % 2 == 0) {
 	  if (i % 2 == 1) {			// Odd row
 	      if (j % 2 == 1) {		// Odd col
 		      printf (" X  ");
 		      seatNum = seatNum - i;
-		      takenSeats++;
+		      takenSeatsOther++;
 		} else {		            // Even Col
 		      printf ("%c%02d ", seatNum - i, j);
 		}
@@ -69,51 +70,77 @@ int main (void) {
 		      if (j % 2 == 0) {		// Even col
 		         printf (" X  ");
 		         seatNum = seatNum - i;
-		         takenSeats++;
+		         takenSeatsOther++;
 		    } else {		// Odd col
                printf ("%c%02d ", seatNum - i, j);
 		    }
 		}
 	}
+   } else {
+	  if (i % 2 == 0) {			// Odd row
+	      if (j % 2 == 1) {		// Odd col
+		      printf (" X  ");
+		      seatNum = seatNum - i;
+		      takenSeatsOther++;
+		} else {		            // Even Col
+		      printf ("%c%02d ", seatNum - i, j);
+		}
+	 } else {
+	      if (i % 2 == 1) {		// Even row
+		      if (j % 2 == 0) {		// Even col
+		         printf (" X  ");
+		         seatNum = seatNum - i;
+		         takenSeatsOther++;
+		    } else {		// Odd col
+               printf ("%c%02d ", seatNum - i, j);
+		    }
+		}
+	}
+      
+      
+      
+      
+      
+   }
 
 	}
       seatNum = seatNum + 1;
       printf ("\n");
     }
 
-   printf ("*%d students have seats in this arrangement*", takenSeats);
+   printf ("*%d students have seats in this arrangement*", takenSeatsOther);
    printf ("\n\n");
 
    printf ("More-Complicated Seating Chart: \n");
 
-   for (int i = 0; i < numRows; i++) {				// Creates an empty classroom
+   for (int i = 0; i < numRows; i++) {				
       for (int j = 1; j < numCols + 1; j++) {
       char seatNum = '@' + numRows;
-
-	  if (i % 3 == 1) {			// 1st set row
-	      if ((j % 4 == 2) || (j % 4 == 3)) {
-		  printf (" X ");
-		  seatNum = seatNum - i;
-		  takenSeats++;
+                               
+	  if (i % 3 == 0) {			// B 
+	     if (j % 3 == 0)  {
+            printf ("%c%02d ", seatNum - i, j);
 		} else {
-		  printf ("%c%02d ", seatNum - i, j);
-		}
-
-   } else if (i % 3 == 2) {	
-	      if (j % 3 == 0) {	
-		   printf ("%c%02d ", seatNum - i, j);
-		} else {
-		   printf (" X ");
-		   seatNum = seatNum - i;
-		   takenSeats++;
-		}
-
-	    } else {
-	      if (i % 3 == 0) {
-		   if (j % 2 == 0) {
-		      printf (" X ");
+            printf (" X  ");
 		      seatNum = seatNum - i;
-		      takenSeats++;
+		      takenSeatsComplicated++;
+		}
+
+   } else if (i % 3 == 2) {	      // C
+	      if ((j % 4 == 0) || (j % 4 == 1)) {	
+            printf ("%c%02d ", seatNum - i, j);
+		} else {
+            printf (" X  ");
+            seatNum = seatNum - i;
+            takenSeatsComplicated++;
+		}
+
+	    } else {                  // A
+         if (i % 3 == 1) {
+		   if (j % 2 == 0) {
+		      printf (" X  ");
+		      seatNum = seatNum - i;
+		      takenSeatsComplicated++;
 		    } else {
 		      printf ("%c%02d ", seatNum - i, j);
 		    }
@@ -121,21 +148,14 @@ int main (void) {
 
 		}
 	 }
-
+   
 	}
       seatNum = seatNum + 1;
       printf ("\n");
     }
     
-   if ((numRows % 2 == 1) && (numCols % 2 == 1)) {
-      printf ("*%d students have seats in this arrangement*", (takenSeats / 2));
-      printf ("\n\n");
-   } else if ((numRows % 2 == 0) && (numCols % 2 == 1)) {
-        printf ("*%d students have seats in this arrangement*", (takenSeats / 2));
-   } else {
-      printf ("*%d students have seats in this arrangement*", (takenSeats / 2) + 1);
-      printf ("\n\n");
-   }
+    printf ("*%d students have seats in this arrangement*", takenSeatsComplicated);
+
 }
   return 0;
 }
