@@ -38,7 +38,7 @@ int main (void) {
    if (check == 1) {						// If user input for row, column, and check value are valid, code proceeds as normal.
       printf ("Empty Classroom Seating Chart: \n");
 
-   for (int i = 0; i < numRows; i++) {				 // Creates Empty Classroom Seating Chart.
+   for (int i = 0; i < numRows; i++) {				// Creates Empty Classroom Seating Chart.
       for (int j = 1; j < numCols + 1; j++) {
          char seatNum = '@' + numRows;
          printf ("%c%02d ", seatNum - i, j);
