@@ -1,3 +1,13 @@
+/** --------------------------------------------------------------------------
+* This program creates an empty seating chart, an every other seating chart, 
+* and complicated seating chart based on patterns from project 1a. The program 
+* also displayed how many seats were taken in each seating chart.
+* The program was developed using conditional for-loops and a few if-statements.
+* Class: CS 107, Spring 2019
+* Author: Jim Palomo
+* Date: Feb. 19, 2019
+* ---------------------------------------------------------------------------- **/ 
+
 #include <stdio.h>
 
 int main (void) {
