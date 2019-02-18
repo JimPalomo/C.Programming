@@ -35,7 +35,7 @@ int main (void) {
 	}
    }
     
-   if (check == 1) {						// If user input for row and column are valid, code proceeds as normal.
+   if (check == 1) {						// If user input for row and column are valid inputs, code proceeds as normal.
       printf ("Empty Classroom Seating Chart: \n");
 
    for (int i = 0; i < numRows; i++) {				 // Creates Empty Classroom Seating Chart.
@@ -64,8 +64,8 @@ int main (void) {
 		      printf ("%c%02d ", seatNum - i, j);
 		}
 	 } else {
-	  if (i % 2 == 0) {				// If row is even, proceed.
-	      if (j % 2 == 0) {				// If column is odd, then set an X instead of a seat number.
+	  if (i % 2 == 0) {					// If row is even, proceed.
+	      if (j % 2 == 0) {					// If column is odd, then set an X instead of a seat number.
 		         printf (" X  ");
 		         seatNum = seatNum - i;
 		         takenSeatsOther++;
@@ -75,21 +75,21 @@ int main (void) {
 		}
 	}
    } else {
-	  if (i % 2 == 0) {			// Odd row
-	      if (j % 2 == 1) {			// Odd col
+	  if (i % 2 == 0) {			
+	      if (j % 2 == 1) {			
 		      printf (" X  ");
 		      seatNum = seatNum - i;
 		      takenSeatsOther++;
-		} else {		         // Even Col
+		} else {		         
 		      printf ("%c%02d ", seatNum - i, j);
 		}
 	 } else {
-	      if (i % 2 == 1) {			// Even row
-		      if (j % 2 == 0) {		// Even col
+	      if (i % 2 == 1) {			
+		      if (j % 2 == 0) {		
 		         printf (" X  ");
 		         seatNum = seatNum - i;
 		         takenSeatsOther++;
-		    } else {			// Odd col
+		    } else {			
                printf ("%c%02d ", seatNum - i, j);
 		    }
 		}
