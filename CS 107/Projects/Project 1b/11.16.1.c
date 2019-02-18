@@ -38,12 +38,12 @@ int main (void) {
    if (check == 1) {						// If user input for row and column are valid inputs, code proceeds as normal.
       printf ("Empty Classroom Seating Chart: \n");
 
-   for (int i = 0; i < numRows; i++) {				 // Creates Empty Classroom Seating Chart.
+   for (int i = 0; i < numRows; i++) {				// Creates Empty Classroom Seating Chart.
       for (int j = 1; j < numCols + 1; j++) {
-         char seatNum = '@' + numRows;
-         printf ("%c%02d ", seatNum - i, j);
+         char seatNum = '@' + numRows;				// Char seatNum helps set up the starting row to be the userInputs maximum row number. This is done by using the ASCII table and adding the number of rows. 
+         printf ("%c%02d ", seatNum - i, j);			// Prints the seat number and row letter based on the current row.
 	}
-      seatNum = seatNum + 1;
+      seatNum = seatNum + 1;					// Adds 
       printf ("\n");
     }
 
