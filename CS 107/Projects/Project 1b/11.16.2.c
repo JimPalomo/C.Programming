@@ -9,10 +9,10 @@ int main (void) {
    int takenSeatsComplicated;
    int check = 1;
 
-   printf ("Enter number of rows: \n");				// Scans user values for number of rows.
+   printf ("Enter number of rows: \n");				// Asks for user input for number of rows and stores this value under numRows..
    scanf ("%d", &numRows);
   
-   if (numRows > 26) {						// Checks to see if user input for numRow is valid (valid rows <=26). If row is invalid, int check becomes 0 and does not run the rest of the code.
+   if (numRows > 26) {						// Checks to see if user input for numRow is valid (numRows <= 26 && numRows > 0). If row is invalid, variable check becomes 0 and does not run the rest of the code.
       printf ("Too many rows! Max. number of rows is 26. \n");
       check = 0;
    } else if (numRows <= 0) {
@@ -26,7 +26,7 @@ int main (void) {
       scanf ("%d", &numCols);
       printf ("\n");
 
-   if (numCols > 30) {						// Checks to see if column is a valid number, else check becomes 0.
+   if (numCols > 30) {						// Checks to see if column is a valid number (numCols < 30 && numCols > 0) , else variable check becomes 0.
       printf("Too many seats per rows! Max. number of seats per row is 30. \n");
       check = 0;
 	} else if (numCols <= 0) {
@@ -35,7 +35,7 @@ int main (void) {
 	}
    }
     
-   if (check == 1) {						// If user input for row and column are valid, code proceeds as normal.
+   if (check == 1) {						// If user input for row, column, and check value are valid, code proceeds as normal.
       printf ("Empty Classroom Seating Chart: \n");
 
    for (int i = 0; i < numRows; i++) {				 // Creates Empty Classroom Seating Chart.
@@ -51,25 +51,25 @@ int main (void) {
   printf ("Every-Other Seating Chart: \n");
 
    for (int i = 0; i < numRows; i++) {				// Creates an Every-Other Seating Chart.
-      for (int j = 1; j < numCols + 1; j++) {			// Creates this chart based on every other pattern on each line.
+      for (int j = 1; j < numCols + 1; j++) {			// Creates this chart based on patterns of each row and column on each line.
       char seatNum = '@' + numRows;
 
-   if (numRows % 2 == 0) {					// If the number of rows is even, then proceed.
-	  if (i % 2 == 1) {					// If row is even proceed.
-	      if (j % 2 == 1) {					// If column is odd then print an "X" instead of a seat number.
+   if (numRows % 2 == 0) {					// If the number of rows is even, then proceed. This is needed because the total number of rows can change depending on user input. If the numRows changes then the pattern changes; therefore, this function is needed to assess this issue.
+	  if (i % 2 == 1) {					// If the current row is odd proceed.
+	      if (j % 2 == 1) {					// If the row is odd and column is odd then print an "X" instead of a seat number. Based on every-other seating pattern.
 		      printf (" X  ");
-		      seatNum = seatNum - i;
-		      takenSeatsOther++;
-		} else {		            		// If column is not odd; therefore even then print seat number.
-		      printf ("%c%02d ", seatNum - i, j);
+		      seatNum = seatNum - i;			// Sets the row letter for the specified condition. Since the seating chart starts at the user input (ex. K) then the seat number assess this issue by subtracting the userInput for numRows by the current row. Therefore, after each iteration, the compiler outputs the next row (ex. K -> J -> I).
+		      takenSeatsOther++;			// If seat is taken then add +1 to takenSeatsOther. This functions adds up each seat that is taken by each iteration.
+		} else {		            		
+		      printf ("%c%02d ", seatNum - i, j);	// If column is not odd; therefore even then print seat number (row letter & column number).
 		}
 	 } else {						// If the number of rows is not even and therefore odd, then proceed.  
-	  if (i % 2 == 0) {					// If row is even proceed.
-	      if (j % 2 == 0) {					// If column is odd then print an "X" instead of a seat number.
+	  if (i % 2 == 0) {					// If the current row is even proceed.
+	      if (j % 2 == 0) {					// If column is even and current row is even then print an "X" instead of a seat number.
 		         printf (" X  ");
 		         seatNum = seatNum - i;
 		         takenSeatsOther++;
-		    } else {					// If column is not even; therefore odd then print seat number.
+		    } else {					// If column is not even; therefore odd then print seat number (current row & current column).
                printf ("%c%02d ", seatNum - i, j);
 		    }
 		}
