@@ -43,7 +43,7 @@ int main (void) {
          char seatNum = '@' + numRows;				// Char seatNum helps set up the starting row to be the userInputs maximum row number. This is done by using the ASCII table and adding the number of rows. 
          printf ("%c%02d ", seatNum - i, j);			// Prints the seat number and row letter based on the current row.
 	}
-      seatNum = seatNum + 1;					// Adds 
+       					// Adds 
       printf ("\n");
     }
 
@@ -97,7 +97,7 @@ int main (void) {
    }
 
 	}
-      seatNum = seatNum + 1;
+       
       printf ("\n");
     }
 
@@ -202,7 +202,7 @@ int main (void) {
 	  }
 	      
 	}
-      seatNum = seatNum + 1;
+       
       printf ("\n");
     }
     
