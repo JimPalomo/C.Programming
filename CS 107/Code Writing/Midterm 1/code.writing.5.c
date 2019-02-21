@@ -5,8 +5,6 @@
         the	average	is	92.5.
 */
 
-// Note: Input: 0 0 100 is not currently working.
-
 #include <stdio.h>
 #include <math.h>
 
@@ -21,10 +19,10 @@ int main()
    scanf("%lf", &test2);
    scanf("%lf", &test3);
 
-   if ((test1 < test2) && (test1 < test3)) {
+   if ((test1 <= test2) && (test1 <= test3)) {
       printf("The average is: %.1lf", (test2 + test3) / 2);
       
-   } else if ((test2 < test1) && (test2 < test3)) {
+   } else if ((test2 <= test1) && (test2 <= test3)) {
       printf("The average is: %.1lf", (test1 + test3) / 2);
    
    } else {
