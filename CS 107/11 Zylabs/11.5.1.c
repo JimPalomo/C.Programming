@@ -29,10 +29,16 @@ int main() {
    }
    
    printf("\n\n");
-   
+      
    printf("Enter a positive integer to shift: \n");
    scanf("%d", &shift);
+   
+   if (strlen(userString) % 2 == 1) {
+      shift = -1 * shift;
+   }
+   
    for(int i = 0; i < (strlen(stringToInt)); i++) {
+      //  stringToInt[i] = stringToInt[i] + shift;
       if ((stringToInt[i] + shift) > 126) { 
          stringToInt[i] = stringToInt[i] + (shift - 1) - 126 + 32;
       
