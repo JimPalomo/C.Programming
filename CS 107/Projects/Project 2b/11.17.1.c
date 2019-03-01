@@ -2,7 +2,6 @@
 
 int main() {
 
-   /* Type your code here. */
    int numPlanets;
    int i;
    char planet[12][20] = {"Earth", "Mars", "Venus", "HAT-P-16", "K2-29", "KELT-4-A", "Kepler-421", "KOI-94", "Kepler-62", "Kepler-46", "PH2", "WASP-82"}; 
