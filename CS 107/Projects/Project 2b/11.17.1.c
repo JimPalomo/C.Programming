@@ -1,5 +1,3 @@
-// Not finished
-
 #include <stdio.h>
 
 int main() {
@@ -32,9 +30,9 @@ int main() {
    printf("\n\n");
    
    // Prints Planet by size histogram ------ Fix
-   printf("Planet by size: \n");
+   printf("Planets by size: \n");
 
-   printf("\n<HalfEarth: ");
+   printf("<HalfEarth: ");
    for (i = 0; i < numPlanets; i++) {
       if (((planetRadius[i] * 43441) < 2000)) {
          printf("*");
@@ -43,14 +41,14 @@ int main() {
    
    printf("\n    ~Earth: ");
    for (i = 0; i < numPlanets; i++) {
-      if (((planetRadius[i] * 43441) > 2000) && ((planetRadius[i] * 43441) < 4000)) {
+      if (((planetRadius[i] * 43441) > 2000) && ((planetRadius[i] * 43441) < 10000)) {
          printf("*");
       }
    }
    
    printf("\n  <Jupiter: ");
    for (i = 0; i < numPlanets; i++) {
-      if (((planetRadius[i] * 43441) > 4000) && ((planetRadius[i] * 43441) < 43441)) {
+      if (((planetRadius[i] * 43441) > 10000) && ((planetRadius[i] * 43441) < 43441)) {
          printf("*");
       }
    }
@@ -61,19 +59,45 @@ int main() {
          printf("*");
       }
    }
-   
-   
    printf("\n\n");
+   
    // Prints planet distances to their stars (in AU)
-   printf("Planet distances to their star (in AU): \n");
+   printf("Planet distances to their stars (in AU): \n");
    for (i = 0; i < numPlanets - 1; i++) {
-      printf("%.3lf ", planetDistance[i] * starRadius[i] * (215 / planetRadius[i]));
+      printf("%.3lf, ", planetDistance[i] * starRadius[i] / 215);
    }
-   printf("%.3lf ", planetDistance[i]);
+   printf("%.3lf ", planetDistance[i] * starRadius[i] / 215);
    printf("\n");
   
   // Prints histogram for planets by distance to their stars
-  
+   printf("\nPlanets by distance to their stars: \n");
+   printf("\n<HalfEarth: ");
+   for (i = 0; i < numPlanets; i++) {
+      if (((planetDistance[i] * starRadius[i] / 215) < .5)) {
+         printf("*");
+      }
+   }
+   
+   printf("\n    ~Earth: ");
+   for (i = 0; i < numPlanets; i++) {
+      if (((planetDistance[i] * starRadius[i] / 215) > .5)  && ((planetDistance[i] * starRadius[i] / 215) < 2)) {
+         printf("*");
+      }
+   }
+   
+   printf("\n  <Jupiter: ");
+   for (i = 0; i < numPlanets; i++) {
+      if (((planetDistance[i] * starRadius[i] / 215) > 2) && ((planetDistance[i] * starRadius[i] / 215) < 4)) {
+         printf("*");
+      }
+   }
+   
+   printf("\n  >Jupiter: ");
+   for (i = 0; i < numPlanets; i++) {
+      if (((planetDistance[i] * starRadius[i] / 215) > 4)) {
+         printf("*");
+      }
+   }
   
   
   return 0; 
