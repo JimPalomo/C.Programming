@@ -1,3 +1,11 @@
+/** ------------------------------------------------------
+* This program uses data about exoplanets to display data
+* based on the number of planets the user wants to compare. 
+* Class: CS 107, Spring 2019
+* Author: Jim Palomo
+* Date: Mar. 5, 2019
+* -------------------------------------------------------- **/ 
+
 #include <stdio.h>
 
 int main() {
@@ -93,7 +101,7 @@ int main() {
    
    printf("\n  >Jupiter: ");
    for (i = 0; i < numPlanets; i++) {
-      if (((planetDistance[i] * starRadius[i] / 215) > 5.2)) {                                                       // Prints a star (*) if planet distance by their star if the distance is > 5.2 AU.
+      if (((planetDistance[i] * starRadius[i] / 215) > 5.2)) {                                                       // Prints a star (*) if planet distance by their star if the distance is > 5.2 AU
          printf("*");
       }
    }
