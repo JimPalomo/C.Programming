@@ -28,7 +28,7 @@ int main() {
    printf("%.0lf ", planetRadius[i] * 43441);
    printf("\n\n");
    
-   // Prints Planet by size histogram ------ Fix
+   // Prints Planet by size histogram
    printf("Planets by size: \n");
 
    printf("<HalfEarth: ");
