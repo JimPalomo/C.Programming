@@ -3,6 +3,7 @@
 
         Hint: Start with "numUsers = ...". 
 */
+
 #include <stdio.h>
 
 int main(void) {
