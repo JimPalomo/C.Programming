@@ -15,7 +15,10 @@ int main(void) {
    scanf("%s", &passCode);
 
    /* Your solution goes here  */
-
+   if (isdigit(passCode[0]) || isdigit(passCode[1]) || isdigit(passCode[2])) { 
+      hasDigit = true;
+   }
+   
    if (hasDigit) {
       printf("Has a digit.\n");
    }
