@@ -14,86 +14,86 @@ int main() {
    scanf("%d", &numPlanets);
    printf("\n");
    
-   // Prints out each of the planets based on the numPlanets the user enters
+   // Displays out each of the planets based on the numPlanets the user enters
    for (i = 0; i < numPlanets; i++) {
       printf("%s ", planet[i]);
    }
    printf("\n\n");
    
-   // Prints planet radii (in miles);
+   // Displays planet radii (in miles)
    printf("Planet Radii (in miles): \n");
-   for (i = 0; i< numPlanets - 1; i++) {
-      printf("%.0lf, ", planetRadius[i] * 43441);
+   for (i = 0; i< numPlanets - 1; i++) {                                                                              // Loop to display planet radii
+      printf("%.0lf, ", planetRadius[i] * 43441);                                                                     // Prints out the planet radii based on the current planet in the loop multiplied by 43441 (jupiter's radius in miles)
    }
    printf("%.0lf ", planetRadius[i] * 43441);
    printf("\n\n");
    
-   // Prints Planet by size histogram
+   // Displays Planet by size histogram
    printf("Planets by size: \n");
 
    printf("<HalfEarth: ");
    for (i = 0; i < numPlanets; i++) {
-      if (((planetRadius[i] * 43441) < (3959/2))) {
-         printf("*");
+      if (((planetRadius[i] * 43441) < (3959/2))) {                                                                   // Prints a star (*) if planet radius (in miles) is less than HalfEarth (3959/2)
+         printf("*");                                                                                                 // Note 3959 is the radius of Earth in miles, we divide this number by 2 to represent HalfEarth
       }
    }
    
    printf("\n    ~Earth: ");
    for (i = 0; i < numPlanets; i++) {
-      if (((planetRadius[i] * 43441) > (3959/2)) && ((planetRadius[i] * 43441) < (3959*2))) {
+      if (((planetRadius[i] * 43441) > (3959/2)) && ((planetRadius[i] * 43441) < (3959*2))) {                         // Prints a star (*) if planet radius (in miles) is > HalfEarth (radius) and < DoubleEarth (radius)
          printf("*");
       }
    }
    
    printf("\n  <Jupiter: ");
    for (i = 0; i < numPlanets; i++) {
-      if (((planetRadius[i] * 43441) > (3959*2)) && ((planetRadius[i] * 43441) < 43441)) {
+      if (((planetRadius[i] * 43441) > (3959*2)) && ((planetRadius[i] * 43441) < 43441)) {                             // Prints a star (*) if planet radius (in miles) is > DoubleEarth (radius) and < Jupiter (radius) 
          printf("*");
       }
    }
    
    printf("\n  >Jupiter: ");
    for (i = 0; i < numPlanets; i++) {
-      if (((planetRadius[i] * 43441) > 43441)) {
+      if (((planetRadius[i] * 43441) > 43441)) {                                                                       // Prints a star (*) if planet radius (in miles) is > Jupiter's radius
          printf("*");
       }
    }
    printf("\n\n");
    
-   // Prints planet distances to their stars (in AU)
+   // Displays planet distances to their stars (in AU)
    printf("Planet distances to their stars (in AU): \n");
    for (i = 0; i < numPlanets - 1; i++) {
-      printf("%.3lf, ", planetDistance[i] * starRadius[i] / 215);
+      printf("%.3lf, ", planetDistance[i] * starRadius[i] / 215);                                                      // planetDistance[i] * starRadius[i] / 215 represents the planet distances from their star (in AU)
    }
    printf("%.3lf ", planetDistance[i] * starRadius[i] / 215);
    printf("\n");
   
-  // Prints histogram for planets by distance to their stars
+  // Displays histogram for planets by distance to their stars
    printf("\nPlanets by distance to their stars: \n");
    printf("\n<HalfEarth: ");
    for (i = 0; i < numPlanets; i++) {
-      if (((planetDistance[i] * starRadius[i] / 215) < .5)) {
+      if (((planetDistance[i] * starRadius[i] / 215) < .5)) {                                                          // Prints a star (*) if planet distance by their star if the distance is < .5 AU
          printf("*");
       }
    }
    
    printf("\n    ~Earth: ");
    for (i = 0; i < numPlanets; i++) {
-      if (((planetDistance[i] * starRadius[i] / 215) > .5)  && ((planetDistance[i] * starRadius[i] / 215) < 2)) {
+      if (((planetDistance[i] * starRadius[i] / 215) > .5)  && ((planetDistance[i] * starRadius[i] / 215) < 2)) {     // Prints a star (*) if planet distance by their star if the distance is between .5 and 2 AU
          printf("*");
       }
    }
    
    printf("\n  <Jupiter: ");
    for (i = 0; i < numPlanets; i++) {
-      if (((planetDistance[i] * starRadius[i] / 215) > 2) && ((planetDistance[i] * starRadius[i] / 215) < 5.2)) {
+      if (((planetDistance[i] * starRadius[i] / 215) > 2) && ((planetDistance[i] * starRadius[i] / 215) < 5.2)) {    // Prints a star (*) if planet distance by their star if the distance is between 2 and 5.2 AU
          printf("*");
       }
    }
    
    printf("\n  >Jupiter: ");
    for (i = 0; i < numPlanets; i++) {
-      if (((planetDistance[i] * starRadius[i] / 215) > 5.2)) {
+      if (((planetDistance[i] * starRadius[i] / 215) > 5.2)) {                                                       // Prints a star (*) if planet distance by their star if the distance is > 5.2 AU.
          printf("*");
       }
    }
