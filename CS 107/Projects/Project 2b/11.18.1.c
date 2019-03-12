@@ -1,6 +1,7 @@
 /** ------------------------------------------------------
-* This program uses data about exoplanets to display data
-* based on the number of planets the user wants to compare. 
+* This program uses data from the National Academy of  
+* Engineering website  and determines which factors are true 
+* based on the hability or inhability of several exoplanets.
 * Class: CS 107, Spring 2019
 * Author: Jim Palomo
 * Date: Mar. 5, 2019
@@ -26,7 +27,7 @@ double const RADIUS_EARTH = 3959.0; //miles
 double calcDistToStar(double starRadius, double planetRatio){
    //TODO: write the code to obtain the required functionality for this function
    
-   return starRadius * planetRatio / 215.0;                                                              // Returns planet distance in units of AU.
+   return starRadius * planetRatio / 215.0;                                                                                                                                                           // Returns planet distance in units of AU.
 }
 
 // countDataInInterval: "bins" the input data by counting entries in the specified interval
@@ -40,8 +41,8 @@ int countDataInInterval(double lowerBound, double upperBound, double data[], int
    int count = 0;
    
    for (int i = 0; i < size; i++) {    
-      if ((data[i] >= lowerBound) && (data[i] <= upperBound)) {                                          // If the data value is between each habitable factors  
-         count++;                                                                                        // 
+      if ((data[i] >= lowerBound) && (data[i] <= upperBound)) {                                                                                                                                    // If the data value is between each habitable factors  
+         count++;                                                                                                                                                                                  // If the data array (radius, orbital period, temperature, or distance) is within the bounds, variable count adds + 1 to itself to keep track of the number of planets that are in the bounds.
       }
    }
    
@@ -58,7 +59,7 @@ int countDataInInterval(double lowerBound, double upperBound, double data[], int
 bool isItHabitable(double radius, double orbitPer, double temperature, double distance){
    //TODO: write the code to obtain the required functionality for this function
    
-      if ((radius >= 792.6) && (radius <= 19815.0) && (orbitPer >= 91) && (orbitPer <= 801) && (temperature >= 183) && (temperature <= 294) && (distance >= 0.4) && (distance <= 2.35)) {
+      if ((radius >= 792.6) && (radius <= 19815.0) && (orbitPer >= 91) && (orbitPer <= 801) && (temperature >= 183) && (temperature <= 294) && (distance >= 0.4) && (distance <= 2.35)) {       // 
          return true;
       } else {
          return false;  
