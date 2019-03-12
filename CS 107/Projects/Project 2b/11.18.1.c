@@ -1,3 +1,11 @@
+/** ------------------------------------------------------
+* This program uses data about exoplanets to display data
+* based on the number of planets the user wants to compare. 
+* Class: CS 107, Spring 2019
+* Author: Jim Palomo
+* Date: Mar. 5, 2019
+* -------------------------------------------------------- **/ 
+
 //
 //  TODO: this header, formatting, proper variable names, 
 //        comment functions and main code blocks, etc.
@@ -18,7 +26,7 @@ double const RADIUS_EARTH = 3959.0; //miles
 double calcDistToStar(double starRadius, double planetRatio){
    //TODO: write the code to obtain the required functionality for this function
    
-   return starRadius * planetRatio / 215.0;
+   return starRadius * planetRatio / 215.0;                                                              // Returns planet distance in units of AU.
 }
 
 // countDataInInterval: "bins" the input data by counting entries in the specified interval
@@ -31,15 +39,14 @@ int countDataInInterval(double lowerBound, double upperBound, double data[], int
    //TODO: write the code to obtain the required functionality for this function
    int count = 0;
    
-   for (int i = 0; i < size; i++) {   
-      if ((data[i] >= lowerBound) && (data[i] <= upperBound)) {
-         count++;
+   for (int i = 0; i < size; i++) {    
+      if ((data[i] >= lowerBound) && (data[i] <= upperBound)) {                                          // If the data value is between each habitable factors  
+         count++;                                                                                        // 
       }
    }
    
    return count;
 }
-
 
 // isItHabitable: apply conditions for "Habitable Exoplanet" to check if the planet is "habitable"
 // [in] radius: planet radius (in miles)
@@ -50,16 +57,14 @@ int countDataInInterval(double lowerBound, double upperBound, double data[], int
 
 bool isItHabitable(double radius, double orbitPer, double temperature, double distance){
    //TODO: write the code to obtain the required functionality for this function
-   for (int i = 0; i < 263; i++) {
+   
       if ((radius >= 792.6) && (radius <= 19815.0) && (orbitPer >= 91) && (orbitPer <= 801) && (temperature >= 183) && (temperature <= 294) && (distance >= 0.4) && (distance <= 2.35)) {
          return true;
       } else {
          return false;  
       }
-   }
    
 }
-
 
 //TODO: WRITE THE FUNCTION isItVeryUnhabitable(), 
 //      which takes in identical input argruments 
@@ -67,7 +72,15 @@ bool isItHabitable(double radius, double orbitPer, double temperature, double di
 //      (make sure to include a description similar
 //      to those in the provided code template)
 
-
+bool isItVeryUnhabitable(double radius, double orbitPer, double temperature, double distance){
+   //TODO: write the code to obtain the required functionality for this function
+  
+      if (((radius < 792.6) || (radius > 19815.0)) && ((orbitPer < 91) || (orbitPer > 801)) && ((temperature < 183) || (temperature > 294)) && ((distance < 0.4) || (distance > 2.35))) {
+         return true;
+      } else {
+         return false;  
+      }
+}
 
 int main() {
 // ~~~~~~~~~~~~~~ START OF PROVIDED TEMPLATE CODE ~~~~~~~~~~~~~~~~~~~`    
@@ -126,20 +139,20 @@ int main() {
    int distToStarCheck;
    
    // Calculate planetDistToStar in mi.
-      for(int i; i < 263; i++) {
+      for(int i; i < np; i++) {
          planetDistToStar[i] = calcDistToStar(starRadii[i], planetDistOverRadius[i]);
       }
       
    // Convert planetRadii in J to Mi.
-       for(int i; i < 263; i++) {
+       for(int i; i < np; i++) {
           planetRadiiMi[i] = planetRadiiJ[i] * 43441;
        }
         
    // Print hability of planets by factor
-   radiusCheck = countDataInInterval(792.6, 19815.0, planetRadiiMi, 263);
-   orbitalCheck = countDataInInterval(91.0, 801.0, planetOrbPeriod, 263);
-   tempCheck = countDataInInterval(183.0, 294.0, planetEqTemp, 263);
-   distToStarCheck = countDataInInterval(0.4, 2.35, planetDistToStar, 263);
+   radiusCheck = countDataInInterval(792.6, 19815.0, planetRadiiMi, np);
+   orbitalCheck = countDataInInterval(91.0, 801.0, planetOrbPeriod, np);
+   tempCheck = countDataInInterval(183.0, 294.0, planetEqTemp, np);
+   distToStarCheck = countDataInInterval(0.4, 2.35, planetDistToStar, np);
    
    printf("\nTotal number of planets passing the radius check: %d\n", radiusCheck);
    printf("Total number of planets passing the orbital period check: %d\n", orbitalCheck);
@@ -149,22 +162,29 @@ int main() {
    // Print Potential Habitable Planets
    printf("Potentially Habitable Planets: \n");
    
-   for (int i; i < 263; i++) {
-      isItHabitable(planetRadiiMi[i], planetOrbPeriod[i], planetEqTemp[i], planetDistToStar[i]);
-      if (isItHabitable == true) {
-         printf("%s\n", planetNames[i][m]);  
+   int check = 0;
+   for (int i; i < np; i++) {
+      if (isItHabitable(planetRadiiMi[i], planetOrbPeriod[i], planetEqTemp[i], planetDistToStar[i])) {
+         printf("%s\n", planetNames[i]); 
+         check++;
       }
    }
-    
-    
-    
+   
+   printf("Total number of Potentially Habitable Planets: %d\n\n", check);
+   
+   printf("Very Unhabitable Planets: \n");
+   int check2 = 0;
+
+   for (int i = 0; i < np; i++) {
+      if (isItVeryUnhabitable(planetRadiiMi[i], planetOrbPeriod[i], planetEqTemp[i], planetDistToStar[i])) {
+         printf("%s\n", planetNames[i]); 
+         check2++;
+      } 
+   }
+   
+   printf("Total number of Very Unhabitable Planets: %d\n", check2);
     
     // TODO: implement calculations and functions calls to acheive the required programming tasks
-    
-    
-    
-    
-
-    return 0;
+   
+   return 0;
 }
-
