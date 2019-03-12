@@ -175,7 +175,7 @@ int main() {
    }
   
    // Prints the number of habitable planets.
-   printf("Total number of Potentially Habitable Planets: %d\n\n", check);
+   printf("Total number of Potentially Habitable Planets: %d\n\n", checkHabitable);
    
    // Prints very unhabitable planets.
    printf("Very Unhabitable Planets: \n");
@@ -189,7 +189,7 @@ int main() {
    }
    
    // Prints the number of very unhabitable planets
-   printf("Total number of Very Unhabitable Planets: %d\n", check2);
+   printf("Total number of Very Unhabitable Planets: %d\n", checkVeryUnhabitable);
     
     // TODO: implement calculations and functions calls to acheive the required programming tasks
    
