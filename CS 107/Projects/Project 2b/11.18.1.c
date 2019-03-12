@@ -131,7 +131,8 @@ int main() {
     
     // ~~~~~~~~~~~~~~ END OF PROVIDED TEMPLATE CODE ~~~~~~~~~~~~~~~~~~~`
     // **** Enter your code below this comment ****
-   
+    // TODO: implement calculations and functions calls to acheive the required programming tasks
+
    double planetDistToStar[300];
    double planetRadiiMi[300];
    int radiusCheck;
@@ -190,8 +191,6 @@ int main() {
    
    // Prints the number of very unhabitable planets
    printf("Total number of Very Unhabitable Planets: %d\n", checkVeryUnhabitable);
-    
-    // TODO: implement calculations and functions calls to acheive the required programming tasks
-   
+       
    return 0;
 }
