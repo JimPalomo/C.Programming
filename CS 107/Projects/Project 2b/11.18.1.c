@@ -139,8 +139,6 @@ int main() {
    int orbitalCheck;
    int tempCheck;
    int distToStarCheck;
-   int checkHabitable = 0;
-   int checkVeryUnhabitable = 0;
    
    // Calculates planetDistToStar in mi.
       for(int i; i < np; i++) {
@@ -164,9 +162,10 @@ int main() {
    printf("Total number of planets passing the equilibrium temperature check: %d\n", tempCheck);
    printf("Total number of planets passing the distance to star check: %d\n\n", distToStarCheck);
 
-   // Prints potential habitable planets.
+   // Prints potential habitable planets and initializes checkHabitable to 0.
    printf("Potentially Habitable Planets: \n");
-   
+   int checkHabitable = 0;
+
    // Calls the function isItHabitable which determines if each planet is habitable by confirming four habitable checks of an exoplanet and prints out the planets name.
    for (int i; i < np; i++) {
       if (isItHabitable(planetRadiiMi[i], planetOrbPeriod[i], planetEqTemp[i], planetDistToStar[i])) {
@@ -178,9 +177,10 @@ int main() {
    // Prints the number of habitable planets.
    printf("Total number of Potentially Habitable Planets: %d\n\n", checkHabitable);
    
-   // Prints very unhabitable planets.
+   // Prints very unhabitable planets and initializes checkVeryUnhabitable to 0.
    printf("Very Unhabitable Planets: \n");
-   
+   int checkVeryUnhabitable = 0;
+
    // Calls the function isItVeryUnhabitable which determines if each planet is very unhabitable by checking four factors of unhabitablility and then prints the name of the planets
    for (int i = 0; i < np; i++) {
       if (isItVeryUnhabitable(planetRadiiMi[i], planetOrbPeriod[i], planetEqTemp[i], planetDistToStar[i])) {
