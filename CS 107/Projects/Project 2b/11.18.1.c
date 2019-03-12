@@ -4,7 +4,7 @@
 * based on the hability or inhability of several exoplanets.
 * Class: CS 107, Spring 2019
 * Author: Jim Palomo
-* Date: Mar. 5, 2019
+* Date: Mar. 12, 2019
 * -------------------------------------------------------- **/ 
 
 //
@@ -116,7 +116,7 @@ int main() {
         return -1; // -1 indicates error
     }
     while (counter < np){
-        fscanf(inFile,"%d",&planetIDs[counter]);
+        fscanf(inFile,"%d",&planetIDs[counter]);                                                                                                                                                       // Scans and obtains data from .txt file provided by instructor to fill arrays with data.
         fscanf(inFile,"%s",planetNames[counter]);
         fscanf(inFile,"%lf",&planetOrbPeriod[counter]);
         fscanf(inFile,"%lf",&planetRadiiJ[counter]);
@@ -138,51 +138,57 @@ int main() {
    int orbitalCheck;
    int tempCheck;
    int distToStarCheck;
+   int checkHabitable = 0;
+   int checkVeryUnhabitable = 0;
    
-   // Calculate planetDistToStar in mi.
+   // Calculates planetDistToStar in mi.
       for(int i; i < np; i++) {
          planetDistToStar[i] = calcDistToStar(starRadii[i], planetDistOverRadius[i]);
       }
       
-   // Convert planetRadii in J to Mi.
+   // Converts planetRadii in J to Mi.
        for(int i; i < np; i++) {
           planetRadiiMi[i] = planetRadiiJ[i] * 43441;
        }
         
-   // Print hability of planets by factor
+   // Calls the function countDataInterval based on each habitable factor which is given in an array. This is done to make the code more legible.
    radiusCheck = countDataInInterval(792.6, 19815.0, planetRadiiMi, np);
    orbitalCheck = countDataInInterval(91.0, 801.0, planetOrbPeriod, np);
    tempCheck = countDataInInterval(183.0, 294.0, planetEqTemp, np);
    distToStarCheck = countDataInInterval(0.4, 2.35, planetDistToStar, np);
    
+   // Prints hability of planets by habilitable factors provided in comments above and in instructions.
    printf("\nTotal number of planets passing the radius check: %d\n", radiusCheck);
    printf("Total number of planets passing the orbital period check: %d\n", orbitalCheck);
    printf("Total number of planets passing the equilibrium temperature check: %d\n", tempCheck);
    printf("Total number of planets passing the distance to star check: %d\n\n", distToStarCheck);
 
-   // Print Potential Habitable Planets
+   // Prints potential habitable planets.
    printf("Potentially Habitable Planets: \n");
    
-   int check = 0;
+   // Calls the function isItHabitable which determines if each planet is habitable by confirming four habitable checks of an exoplanet and prints out the planets name.
    for (int i; i < np; i++) {
       if (isItHabitable(planetRadiiMi[i], planetOrbPeriod[i], planetEqTemp[i], planetDistToStar[i])) {
          printf("%s\n", planetNames[i]); 
-         check++;
+         checkHabitable++;                                                                                                                                                                           // Function keeps track of the number of habitable planets. The number of habitable exoplanets is then printed below.
       }
    }
-   
+  
+   // Prints the number of habitable planets.
    printf("Total number of Potentially Habitable Planets: %d\n\n", check);
    
+   // Prints very unhabitable planets.
    printf("Very Unhabitable Planets: \n");
-   int check2 = 0;
-
+   
+   // Calls the function isItVeryUnhabitable which determines if each planet is very unhabitable by checking four factors of unhabitablility and then prints the name of the planets
    for (int i = 0; i < np; i++) {
       if (isItVeryUnhabitable(planetRadiiMi[i], planetOrbPeriod[i], planetEqTemp[i], planetDistToStar[i])) {
          printf("%s\n", planetNames[i]); 
-         check2++;
+         checkVeryUnhabitable++;                                                                                                                                                                   // Function keeps track of the number of very unhabitable planets. The number of unhabitable exoplanets is then printed below.
       } 
    }
    
+   // Prints the number of very unhabitable planets
    printf("Total number of Very Unhabitable Planets: %d\n", check2);
     
     // TODO: implement calculations and functions calls to acheive the required programming tasks
