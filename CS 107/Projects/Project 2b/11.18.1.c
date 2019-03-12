@@ -59,7 +59,7 @@ int countDataInInterval(double lowerBound, double upperBound, double data[], int
 bool isItHabitable(double radius, double orbitPer, double temperature, double distance){
    //TODO: write the code to obtain the required functionality for this function
    
-      if ((radius >= 792.6) && (radius <= 19815.0) && (orbitPer >= 91) && (orbitPer <= 801) && (temperature >= 183) && (temperature <= 294) && (distance >= 0.4) && (distance <= 2.35)) {       // 
+      if (((radius >= 792.6) && (radius <= 19815.0)) && ((orbitPer >= 91) && (orbitPer <= 801)) && ((temperature >= 183) && (temperature <= 294)) && ((distance >= 0.4) && (distance <= 2.35))) {       // Determines if the exoplanet is potentially habitable by agreeing with four factors (radius is [792.6-19815 Mi], orbital period [91-801 Days], temperature [183-294 Kelvin], distance [.4-2.35 AU].
          return true;
       } else {
          return false;  
