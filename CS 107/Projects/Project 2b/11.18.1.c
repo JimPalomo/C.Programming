@@ -27,7 +27,7 @@ double const RADIUS_EARTH = 3959.0; //miles
 double calcDistToStar(double starRadius, double planetRatio){
    //TODO: write the code to obtain the required functionality for this function
    
-   return starRadius * planetRatio / 215.0;                                                                                                                                                           // Returns planet distance in units of AU.
+   return starRadius * planetRatio / 215.0;                                                                                                                                                             // Returns planet distance in units of AU.
 }
 
 // countDataInInterval: "bins" the input data by counting entries in the specified interval
@@ -41,8 +41,8 @@ int countDataInInterval(double lowerBound, double upperBound, double data[], int
    int count = 0;
    
    for (int i = 0; i < size; i++) {    
-      if ((data[i] >= lowerBound) && (data[i] <= upperBound)) {                                                                                                                                    // If the data value is between each habitable factors  
-         count++;                                                                                                                                                                                  // If the data array (radius, orbital period, temperature, or distance) is within the bounds, variable count adds + 1 to itself to keep track of the number of planets that are in the bounds.
+      if ((data[i] >= lowerBound) && (data[i] <= upperBound)) {                                                                                                                                         // If the data value is between each habitable factors  
+         count++;                                                                                                                                                                                       // If the data array (radius, orbital period, temperature, or distance) is within the bounds, variable count adds + 1 to itself to keep track of the number of planets that are in the bounds.
       }
    }
    
@@ -76,10 +76,10 @@ bool isItHabitable(double radius, double orbitPer, double temperature, double di
 bool isItVeryUnhabitable(double radius, double orbitPer, double temperature, double distance){
    //TODO: write the code to obtain the required functionality for this function
   
-      if (((radius < 792.6) || (radius > 19815.0)) && ((orbitPer < 91) || (orbitPer > 801)) && ((temperature < 183) || (temperature > 294)) && ((distance < 0.4) || (distance > 2.35))) {              // Determines if an exoplanet is very unhabitable if a factor is within the habitable range (habitable bounds is given in instructions and in comment above).
-         return true;                                                                                                                                                                                  // If the factors exoplanet of an unhabitable exoplanet is met, then return true. 
+      if (((radius < 792.6) || (radius > 19815.0)) && ((orbitPer < 91) || (orbitPer > 801)) && ((temperature < 183) || (temperature > 294)) && ((distance < 0.4) || (distance > 2.35))) {               // Determines if an exoplanet is very unhabitable if a factor is within the habitable range (habitable bounds is given in instructions and in comment above).
+         return true;                                                                                                                                                                                   // If the factors exoplanet of an unhabitable exoplanet is met, then return true. 
       } else {
-         return false;                                                                                                                                                                                 // If at least one factor of an exoplanet is considered habitable, then the planet is not considered very unhabitable; therefore, returning false.
+         return false;                                                                                                                                                                                  // If at least one factor of an exoplanet is considered habitable, then the planet is not considered very unhabitable; therefore, returning false.
       }
 }
 
@@ -116,7 +116,7 @@ int main() {
         return -1; // -1 indicates error
     }
     while (counter < np){
-        fscanf(inFile,"%d",&planetIDs[counter]);                                                                                                                                                       // Scans and obtains data from .txt file provided by instructor to fill arrays with data.
+        fscanf(inFile,"%d",&planetIDs[counter]);                                                                                                                                                        // Scans and obtains data from .txt file provided by instructor to fill arrays with data.
         fscanf(inFile,"%s",planetNames[counter]);
         fscanf(inFile,"%lf",&planetOrbPeriod[counter]);
         fscanf(inFile,"%lf",&planetRadiiJ[counter]);
@@ -170,7 +170,7 @@ int main() {
    for (int i; i < np; i++) {
       if (isItHabitable(planetRadiiMi[i], planetOrbPeriod[i], planetEqTemp[i], planetDistToStar[i])) {
          printf("%s\n", planetNames[i]); 
-         checkHabitable++;                                                                                                                                                                           // Function keeps track of the number of habitable planets. The number of habitable exoplanets is then printed below.
+         checkHabitable++;                                                                                                                                                                              // Function keeps track of the number of habitable planets. The number of habitable exoplanets is then printed below.
       }
    }
   
@@ -185,7 +185,7 @@ int main() {
    for (int i = 0; i < np; i++) {
       if (isItVeryUnhabitable(planetRadiiMi[i], planetOrbPeriod[i], planetEqTemp[i], planetDistToStar[i])) {
          printf("%s\n", planetNames[i]); 
-         checkVeryUnhabitable++;                                                                                                                                                                   // Function keeps track of the number of very unhabitable planets. The number of unhabitable exoplanets is then printed below.
+         checkVeryUnhabitable++;                                                                                                                                                                        // Function keeps track of the number of very unhabitable planets. The number of unhabitable exoplanets is then printed below.
       } 
    }
    
