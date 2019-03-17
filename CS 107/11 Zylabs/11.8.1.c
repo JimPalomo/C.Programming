@@ -30,7 +30,7 @@ struct ItemInCart MakeItem(char* string) {
 int PrintItemCost(struct ItemInCart item) {
     int itemCost = item.quantity * item.price; 
    
-    printf("%s: %d @ $%d = $%d\n", item.name, item.quantity, item.price, itemCost );
+    printf("%s: %d @ $%d = $%d\n", item.name, item.quantity, item.price, itemCost);
     
     return itemCost;    
     
