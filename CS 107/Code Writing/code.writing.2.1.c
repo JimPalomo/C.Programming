@@ -3,9 +3,13 @@
       windchill = 35.7 + 0.6T – 35.7W0.16 + 0.43TW0.16
       Write a function called windChill() that accepts T and W as parameters, and returns the computed windchill.
       Assume that the appropriate libraries have been included (i.e. #include <math.h> is at the top of the file).
+      
       double windchill(double T, double W){
 
       }
+      
+      Write main(), which takes input from the user for the temperature and wind speed, calls the windChill()
+      function above, and outputs the result. Assume all necessary libraries have been included at the top of the file. 
 */
 
 #include <stdio.h>
