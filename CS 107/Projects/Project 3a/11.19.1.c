@@ -44,9 +44,9 @@ int main() {
    int i, j, k;
    
    // Stores data in 2d Array (i = hill : j = x : k = y)
-   for(i = 0; i < 1; i++) {
-      for(j = 0; j < 19; j++) {
-         for(k = 0; k < 15; k++) {
+   for(j = 0; j < 19; j++) {
+       for(k = 0; k < 15; k++) {
+         for(i = 0; i < 1; i++) {
             printf("%4.1f",elev[j] += hi[i]*exp(-pow(si[i],2)*(pow((j-xi[i]),2) + pow((k-yi[i]),2))));
          }
       }
@@ -62,4 +62,3 @@ int main() {
 
    return 0;
 }
-
