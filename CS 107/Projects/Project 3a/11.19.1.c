@@ -39,26 +39,27 @@ int main() {
    // Hill hillFour = setHill("Hopper's Hill ", 14, 2, 15.0, .5);
    // Hill hillFive = setHill("Katherine's Cliff ", 1, 9, 10.0, .5);
    
-   int array[19][15];
+   //int array[19][15];
    
    int i, j, k;
    
-   // Stores data in 2d Array
-   for(i = 0; i < 5; i++) {
+   // Stores data in 2d Array (i = hill : j = x : k = y)
+   for(i = 0; i < 1; i++) {
       for(j = 0; j < 19; j++) {
          for(k = 0; k < 15; k++) {
-            elev[j] += hi[i]*exp(-pow(si[i],2)*(pow((j-xi[i]),2) + pow((k-yi[i]),2)));
+            printf("%4.1f",elev[j] += hi[i]*exp(-pow(si[i],2)*(pow((j-xi[i]),2) + pow((k-yi[i]),2))));
          }
       }
    }
    
-   for(i = 0; i < 5; i++) {
-      for(j = 0; j < 19; j++) {
-         for(k = 0; k < 15; k++) {
-            printf("%d ", array[j][k]);
-         }
-      }
-   }
+
+      // for(j = 0; j < 19; j++) {
+      //    for(k = 0; k < 15; k++) {
+      //       printf(" %lf ", array[j][k]);
+      //    }
+      // }
+   
 
    return 0;
 }
+
