@@ -26,7 +26,7 @@ Hill setHill(char hillName[20], int xlocation, int ylocation, double hillHeight,
 }
 
 int main() {
-   double elev[14] = {0.0};
+   double elev[19][15];
    int xi[5] = {12, 4, 6, 14, 1};
    int yi[5] = {9, 3, 13, 2, 9};
    double hi[5] = {20.0, 20.0, 15.0, 15.0, 10.0}; 
@@ -44,21 +44,19 @@ int main() {
    int i, j, k;
    
    // Stores data in 2d Array (i = hill : j = x : k = y)
-   for(j = 0; j < 19; j++) {
+   for(i = 0; i < 5; i++) {
        for(k = 0; k < 15; k++) {
-         for(i = 0; i < 1; i++) {
-            printf("%4.1f",elev[j] += hi[i]*exp(-pow(si[i],2)*(pow((j-xi[i]),2) + pow((k-yi[i]),2))));
+         for(j = 0; j < 19; j++) {
+            elev[j][k] += hi[i]*exp(-pow(si[i],2)*(pow((j-xi[i]),2) + pow((k-yi[i]),2)));
          }
       }
    }
    
-
-      // for(j = 0; j < 19; j++) {
-      //    for(k = 0; k < 15; k++) {
-      //       printf(" %lf ", array[j][k]);
-      //    }
-      // }
+   for(j = 0; j < 19; j++) {
+      for(k = 0; k < 15; k++) {
+         printf(" %4.1lf ", elev[j][k]);  
+      }
+   }
    
-
    return 0;
 }
