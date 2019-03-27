@@ -1,5 +1,3 @@
-// NOT FINISHED
-
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
@@ -52,8 +50,8 @@ int main() {
       }
    }
    
-   for(j = 0; j < 19; j++) {
-      for(k = 0; k < 15; k++) {
+   for(j = 19; j > 0; j--) {
+      for(k = 15; k > 0; k--) {
          printf(" %4.1lf ", elev[j][k]);  
       }
    }
