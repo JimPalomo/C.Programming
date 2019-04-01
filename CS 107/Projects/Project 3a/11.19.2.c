@@ -45,18 +45,29 @@ int main() {
    
    int i, j, k;
    
+   for(k = 0; k < 15; k++) {
+      for(j = 0; j < 19; j++) {
+         elev[j][k] = 0;
+         
+      }
+   }
+   
    // Stores data in 2d Array (i = hill : j = x : k = y)
-   for(i = 0; i < 5; i++) {
-       for(k = 0; k < 15; k++) {
-         for(j = 0; j < 19; j++) {
+   for(k = 2; k < 14; k++) {
+      for(j = 1; j < 18; j++) {
+         for(i = 0; i < 5; i++) {
             elev[j][k] += newHill[i].height*exp(-pow(newHill[i].slope,2)*(pow((j-newHill[i].loc[0]),2) + pow((k-newHill[i].loc[1]),2)));
          }
       }
    }
    
-   for(j = 19; j > 0; j--) {
-      for(k = 15; k > 0; k--) {
-         printf(" %4.1lf ", elev[j][k]);  
+   // Prints stored data
+   for(k = 14; k > 0; k--) {
+      for(j = 0; j < 19; j++) {
+         printf("%3.1lf ", elev[j][k]);  
+         if (j == 18) {
+            printf("\n");
+         }
       }
    }
    
