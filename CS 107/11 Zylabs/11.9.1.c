@@ -2,36 +2,15 @@
 #include<stdlib.h>
 
 int win(char board[7][5], char player) {
-   for (int i = 0; i < 7; i++) { 
-      if (board[i][0] == player && board[i][1] == player && board[i][2] == player) {
-         return 1;  
-         
-      } else if (board[i][1] == player && board[i][2] == player && board[i][3] == player) {
-         return 1;
-         
-      } else if (board[i][2] == player && board[i][3] == player && board[i][4] == player) {
-         return 1;
-         
-      }  
-   }
-
-   for(int j = 0; j < 5; j++) {
-      if (board[0][j] == player && board [1][j] == player && board[2][j] == player) {
-         return 1; 
-         
-      } else if (board[1][j] == player && board[2][j] == player && board[3][j] == player) {
-         return 1;  
-         
-      } else if (board[2][j] == player && board[3][j] == player && board[4][j] == player) {
-         return 1; 
-      
-      } else if (board[3][j] == player && board[4][j] == player && board[5][j] == player) {
-         return 1;  
-         
-      } else if (board[4][j] == player && board[5][j] == player && board[6][j] == player) {
-         return 1;  
+   
+   for(int i = 0; i < 7; i++) { 
+      for(int j = 0; j < 5; j++) {
+         if (board[i][j] == player && board[i][j+1] == player && board[i][j+2] == player) {
+            return 1;  
+         } else if (board[i][j] == player && board[i+1][j] == player && board[i+2][j] == player) {
+            return 1;  
+         } 
       }
-      
    }
    
    return 0;
