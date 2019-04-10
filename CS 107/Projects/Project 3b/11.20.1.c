@@ -48,7 +48,7 @@ double max2(double num1, double num2) {
 // Function which takes in 4 double parameters and returns the maximum value of the 4
 double max4(double num1, double num2, double num3, double num4) {
    double max12 = max2(num1, num2);
-   double max34 = max2(num1, num2);
+   double max34 = max2(num3, num4);
    
    double max1234 = 0.0;
    
@@ -72,11 +72,11 @@ double min2(double num1, double num2) {
 // Function which takes in 4 double parameters and returns the minimum value of the 4
 double min4(double num1, double num2, double num3, double num4) {
    double min12 = min2(num1, num2);
-   double min34 = min2(num1, num2);
+   double min34 = min2(num3, num4);
    
    double min1234 = 0.0;
    
-   if(min12 > min34) {
+   if(min12 < min34) {
       min1234 = min12;
    } else {
       min1234 = min34;
@@ -93,6 +93,10 @@ int main() {
    // Creates 2D Array to represent the topographic elevation map
    double elev[19][15];
    int i, j, k;
+   int xloc;
+   int yloc;
+   int count = 0;
+   double origElev = 0.0;
    
    // Creates array hill and sets variables for each hill by calling setHill function (data on hills is given by instructor)
    Hill newHill[5];
@@ -120,27 +124,16 @@ int main() {
       }
    }
    
-   // // Prints stored data in the 2D Array (Not needed for part 3b)
-   // printf("Elevations for Innovation Island:\n");
-   // for(k = 14; k > -1; k--) {
-   //    for(j = 0; j < 19; j++) {
-   //       printf("%4.1lf ", elev[j][k]);
-
-   //       if (j == 18) {
-   //          printf("\n");
-   //       }
-   //    }
-   // }
    
    // Scans for user input (x,y) to determine the elevation of which the user is at 
-   int xloc;
-   int yloc;
-   
    printf("Enter your x-location (1-17): ");
    scanf("%d", &xloc);
    
    printf("Enter your y-location (1-13): ");
    scanf("%d", &yloc);
+   
+   // Stores user input of elevation to a temp variable
+   origElev = elev[xloc][yloc];
    
    printf("\n");
    
@@ -182,39 +175,147 @@ int main() {
    // Checkpoint 5
    int userResponse;   
 
-   printf("Do you want to hike up or down? (1 = uphill, 2 = downhill)\n");
+   printf("Do you want to hike up or down? (1 = uphill, 2 = downhill): ");
    scanf("%d", &userResponse);
    
+   printf("\n");
    // Checkpoint 6
    
    // Going uphill
-   double newCoord[19][15];
-   // double newLoc[19][15];
-   int newx;
-   int newy;
-
    
    if (userResponse == 1) {
-      for(i = 0; i < 15; i++) {
-         for(j = 0; j < 19; i++) {
-            newCoord[i][j] = max4(elev[i-1][j],elev[i+1][j],elev[i][j-1],elev[i][j+1]);
-            newx = i;
-            newy = j;
-            printf("(%d,%d)   elev: %lf", newx, newy, newCoord[i][j]);
+      // int xyCoord = max4(elev[xloc-1][yloc],elev[xloc+1][yloc],elev[xloc][yloc-1],elev[xloc][yloc+1]);
+      
+      // Finds location in tophographic map and updates x & y (loops through whole 2D array)
+      // for(i = 0; i < 15; i++) {
+      //    for(j = 0; j < 19; j++) {
+      //       if(xyCoord == elev[i][j]) {
+      //          xloc = i;
+      //          yloc = j;
+      //       }
+      //    }
+      // }
+      
+      // Add temp variable to store original elev[xloc][yloc] & add a count variable. 
+      
+      // Uphill
+      printf("(%d,%d)   elev: %.4lf\n", xloc, yloc, elev[xloc][yloc]); 
+      
+      while(elev[xloc][yloc] < max4(elev[xloc-1][yloc],elev[xloc+1][yloc],elev[xloc][yloc-1],elev[xloc][yloc+1])) {  
+         
+         if (elev[xloc-1][yloc] ==  max4(elev[xloc-1][yloc],elev[xloc+1][yloc],elev[xloc][yloc-1],elev[xloc][yloc+1])) {
+            elev[xloc][yloc] = elev[xloc-1][yloc];
+            xloc = xloc - 1;
+            printf("(%d,%d)   elev: %.4lf\n", xloc, yloc, elev[xloc][yloc]);  
+            count++;
+            
+         } 
+         
+         else if (elev[xloc+1][yloc] ==  max4(elev[xloc-1][yloc],elev[xloc+1][yloc],elev[xloc][yloc-1],elev[xloc][yloc+1])) {
+            elev[xloc][yloc] = elev[xloc-1][yloc];
+            xloc = xloc + 1;
+            printf("(%d,%d)   elev: %.4lf\n", xloc, yloc, elev[xloc][yloc]);   
+            count++;
+               
+         } 
+         
+         else if (elev[xloc][yloc-1] ==  max4(elev[xloc-1][yloc],elev[xloc+1][yloc],elev[xloc][yloc-1],elev[xloc][yloc+1])) {
+            elev[xloc][yloc] = elev[xloc][yloc-1];
+            yloc = yloc - 1;
+            printf("(%d,%d)   elev: %.4lf\n", xloc, yloc, elev[xloc][yloc]);   
+            count++;
+               
+         } 
+         
+         else if (elev[xloc][yloc+1] ==  max4(elev[xloc-1][yloc],elev[xloc+1][yloc],elev[xloc][yloc-1],elev[xloc][yloc+1])) {
+            elev[xloc][yloc] = elev[xloc][yloc+1];
+            yloc = yloc + 1;
+            printf("(%d,%d)   elev: %.4lf\n", xloc, yloc, elev[xloc][yloc]);   
+            count++;
+               
          }
+      
       }
       
-      // newCoord = max4(elev[xloc-1][yloc],elev[xloc+1][yloc],elev[xloc][yloc-1],elev[xloc][yloc+1]);
-
+   } else {
       
-      // Needs fixing (fix i & j)
-   //    if (newLoc[i][j] > elev[xloc][yloc]) {
-   //       newLoc[i][j] == elev[xloc][yloc];
-   //    }
+      // Downhill
+      printf("(%d,%d)   elev: %.4lf\n", xloc, yloc, elev[xloc][yloc]); 
+      
+      while(elev[xloc][yloc] > min4(elev[xloc-1][yloc],elev[xloc+1][yloc],elev[xloc][yloc-1],elev[xloc][yloc+1])) {
+
+         if (elev[xloc-1][yloc] ==  min4(elev[xloc-1][yloc],elev[xloc+1][yloc],elev[xloc][yloc-1],elev[xloc][yloc+1])) {
+            elev[xloc][yloc] = elev[xloc-1][yloc];
+            xloc = xloc - 1;
+            printf("(%d,%d)   elev: %.4lf\n", xloc, yloc, elev[xloc][yloc]);  
+            count++;
+            
+         } 
          
+         else if (elev[xloc+1][yloc] ==  min4(elev[xloc-1][yloc],elev[xloc+1][yloc],elev[xloc][yloc-1],elev[xloc][yloc+1])) {
+            elev[xloc][yloc] = elev[xloc-1][yloc];
+            xloc = xloc + 1;
+            printf("(%d,%d)   elev: %.4lf\n", xloc, yloc, elev[xloc][yloc]);   
+            count++;
+               
+         } 
+         
+         else if (elev[xloc][yloc-1] ==  min4(elev[xloc-1][yloc],elev[xloc+1][yloc],elev[xloc][yloc-1],elev[xloc][yloc+1])) {
+            elev[xloc][yloc] = elev[xloc][yloc-1];
+            yloc = yloc - 1;
+            printf("(%d,%d)   elev: %.4lf\n", xloc, yloc, elev[xloc][yloc]);   
+            count++;
+               
+         } 
+         
+         else if (elev[xloc][yloc+1] ==  min4(elev[xloc-1][yloc],elev[xloc+1][yloc],elev[xloc][yloc-1],elev[xloc][yloc+1])) {
+            elev[xloc][yloc] = elev[xloc][yloc+1];
+            yloc = yloc + 1;
+            printf("(%d,%d)   elev: %.4lf\n", xloc, yloc, elev[xloc][yloc]);   
+            count++;
+               
+         } 
+
+      }
    }
    
+   printf("\nYou hiked %d squares, with elevation change %.4lf\n", count, elev[xloc][yloc] - origElev);
    
+   // Checks where user hiked to
+   if (elev[xloc][yloc] == elev[12][9]) {
+      printf("You hiked to the top of Ada's Apex!");  
+      
+   } 
    
+   else if (elev[xloc][yloc] == elev[4][3]) {
+      printf("You hiked to the top of Turing's Top!");
+      
+   } 
+   
+   else if (elev[xloc][yloc] == elev[6][13]) {
+      printf("You hiked to the top of Babbage's Bluff!");
+      
+   } 
+   
+   else if (elev[xloc][yloc] == elev[14][2]) {
+      printf("You hiked to the top of Hopper's Hill!");
+      
+   } 
+   
+   else if (elev[xloc][yloc] == elev[1][9]) {
+      printf("You hiked to the top of Katherine's Cliff!");
+      
+   } 
+   
+   else if (elev[xloc][yloc] == elev[5][8]){   // Input ocean coord
+      printf("Your hike ended at a lake on the island.");
+
+   }
+   
+   else {
+      printf("You hiked to the ocean.");
+      
+   }
+      
    return 0;
 }
