@@ -35,9 +35,7 @@ Hill setHill(char hillName[20], int xlocation, int ylocation, double hillHeight,
   
 }
 
-// Checkpoint 1-4
-
-// Function which takes in 2 double parameters and returns the maximum value of the 2
+// Function which takes in 2 double parameters and returns the maximum elevation of the 2
 double max2(double num1, double num2) {
    if (num2 > num1) {
       return num2;  
@@ -45,7 +43,7 @@ double max2(double num1, double num2) {
    return num1;
 }
 
-// Function which takes in 4 double parameters and returns the maximum value of the 4
+// Function which takes in 4 double parameters and returns the maximum elevation of the 4
 double max4(double num1, double num2, double num3, double num4) {
    double max12 = max2(num1, num2);
    double max34 = max2(num3, num4);
@@ -61,7 +59,7 @@ double max4(double num1, double num2, double num3, double num4) {
    return max1234;
 }
 
-// Function which takes in 2 double parameters and returns the minimum value of the 2
+// Function which takes in 2 double parameters and returns the minimum elevation of the 2
 double min2(double num1, double num2) {
    if (num2 < num1) {
       return num2;  
@@ -69,7 +67,7 @@ double min2(double num1, double num2) {
    return num1;
 }
 
-// Function which takes in 4 double parameters and returns the minimum value of the 4
+// Function which takes in 4 double parameters and returns the minimum elevation of the 4
 double min4(double num1, double num2, double num3, double num4) {
    double min12 = min2(num1, num2);
    double min34 = min2(num3, num4);
@@ -95,6 +93,7 @@ int main() {
    int i, j, k;
    int xloc;
    int yloc;
+   int userResponse;   
    int count = 0;
    double origElev = 0.0;
    
@@ -172,37 +171,21 @@ int main() {
    
    printf("\n\n");
    
-   // Checkpoint 5
-   int userResponse;   
-
+   // Gathers user's response to hike up or down
    printf("Do you want to hike up or down? (1 = uphill, 2 = downhill): ");
    scanf("%d", &userResponse);
    
    printf("\n");
-   // Checkpoint 6
    
-   // Going uphill
-   
+   // Going uphill if user enters 1 and downhill if user enters 2
    if (userResponse == 1) {
-      // int xyCoord = max4(elev[xloc-1][yloc],elev[xloc+1][yloc],elev[xloc][yloc-1],elev[xloc][yloc+1]);
       
-      // Finds location in tophographic map and updates x & y (loops through whole 2D array)
-      // for(i = 0; i < 15; i++) {
-      //    for(j = 0; j < 19; j++) {
-      //       if(xyCoord == elev[i][j]) {
-      //          xloc = i;
-      //          yloc = j;
-      //       }
-      //    }
-      // }
-      
-      // Add temp variable to store original elev[xloc][yloc] & add a count variable. 
-      
-      // Uphill
+      // Uphill conditional while loop - while current elevation is less than the neighboring elevations keep looping
       printf("(%d,%d)   elev: %.4lf\n", xloc, yloc, elev[xloc][yloc]); 
       
-      while(elev[xloc][yloc] < max4(elev[xloc-1][yloc],elev[xloc+1][yloc],elev[xloc][yloc-1],elev[xloc][yloc+1])) {  
+      while(elev[xloc][yloc] < fabs(max4(elev[xloc-1][yloc],elev[xloc+1][yloc],elev[xloc][yloc-1],elev[xloc][yloc+1]))) {  
          
+         // Conditional statements that occur if a neighboring elevation is picked. For example if the left elevation is greater than the current then xloc becomes x-coord moves 1 to the left 
          if (elev[xloc-1][yloc] ==  max4(elev[xloc-1][yloc],elev[xloc+1][yloc],elev[xloc][yloc-1],elev[xloc][yloc+1])) {
             elev[xloc][yloc] = elev[xloc-1][yloc];
             xloc = xloc - 1;
@@ -234,15 +217,14 @@ int main() {
             count++;
                
          }
-      
       }
       
    } else {
       
-      // Downhill
+      // Downhill conditional while loop - while current elevation is greater than the neighboring elevations keep looping
       printf("(%d,%d)   elev: %.4lf\n", xloc, yloc, elev[xloc][yloc]); 
       
-      while(elev[xloc][yloc] > min4(elev[xloc-1][yloc],elev[xloc+1][yloc],elev[xloc][yloc-1],elev[xloc][yloc+1])) {
+      while(elev[xloc][yloc] > fabs(min4(elev[xloc-1][yloc],elev[xloc+1][yloc],elev[xloc][yloc-1],elev[xloc][yloc+1]))) {
 
          if (elev[xloc-1][yloc] ==  min4(elev[xloc-1][yloc],elev[xloc+1][yloc],elev[xloc][yloc-1],elev[xloc][yloc+1])) {
             elev[xloc][yloc] = elev[xloc-1][yloc];
@@ -281,7 +263,7 @@ int main() {
    
    printf("\nYou hiked %d squares, with elevation change %.4lf\n", count, elev[xloc][yloc] - origElev);
    
-   // Checks where user hiked to
+   // Checks where user hiked up or down to. Options are the peaks of hills, the ocean, or the bottom of a lake
    if (elev[xloc][yloc] == elev[12][9]) {
       printf("You hiked to the top of Ada's Apex!");  
       
@@ -307,12 +289,13 @@ int main() {
       
    } 
    
-   else if (elev[xloc][yloc] == elev[5][8]){   // Input ocean coord
+   else if (elev[xloc][yloc] == elev[5][8]){  
       printf("Your hike ended at a lake on the island.");
 
    }
    
    else {
+      
       printf("You hiked to the ocean.");
       
    }
