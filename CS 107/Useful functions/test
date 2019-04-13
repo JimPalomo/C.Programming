@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+#define BUFFERSIZE 26 // 25 characters plus end of string
+
+// [IN] charArray[]: array of chars
+// [OUT] *ptrsToChars[]: array of pointers to non-alpha chars in charArray
+// [OUT] returns number of non-alpha chars in charArray
+int getPointers(char charArray[], char *ptrsToChars[]){
+   int i = 0;
+   int count = 0;
+   
+   while (charArray[i] != '\0') {
+      if (!(isalpha(charArray[i]))) {
+         (*ptrsToChars)[count] = charArray[i];
+         count++;
+      }
+      i++;
+   }
+   
+   return count; //This line can be modified...
+}
+
+int main() {
+    char userInput[BUFFERSIZE];
+    char *ptrsToChars[BUFFERSIZE];
+    printf("Enter a username: \n");
+    scanf("%s",userInput);
+    //End of template
+    
+    int i = 0;
+    int nonAlpha = getPointers(userInput, ptrsToChars);
+    
+    printf("The username %s has %d non-alpha characters\n", userInput, nonAlpha);
+    
+    for(i = 0; i < nonAlpha; i++) {
+      printf("%c is at address %p\n", (*ptrsToChars)[i], &ptrsToChars[i]);  
+    }
+    
+    return 0;
+}
