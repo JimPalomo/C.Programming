@@ -1,0 +1,19 @@
+// Getting to know pointers
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+int main() {
+
+   int tuna = 19;
+   
+   printf("%p ", &tuna);  // %p prints address location for int tuna and &tuna allows thjis to be printed. 
+
+
+
+
+
+   return 0;   
+}
