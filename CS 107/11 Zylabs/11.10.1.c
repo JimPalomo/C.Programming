@@ -1,3 +1,7 @@
+/*
+            For this exam review lab exercise, you will develop a program that fixes faulty data in a one-dimensional array of integers. Faulty data is represented by a value of 9999, and should be replaced by the average of the two neighboring elements, where integer casting should be applied to non-integer averages (to keep the data stored as integers). If the first or last element is faulty, it should be replaced by the value of its only neighboring element. If two adjacent neighboring elements are faulty anywhere in the array, a message should be printed to screen stating that the data cannot be fixed. The programming tasks have been segmented into levels. It is strongly recommended that you complete all lower level tasks before moving on to a higher level.
+*/
+
 #include <stdio.h>
 #include <stdbool.h>
 
