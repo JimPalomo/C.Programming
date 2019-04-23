@@ -1,4 +1,14 @@
-// DEVELOP HEADER
+/** --------------------------------------------
+* This program is created to aid pre-define 
+* a program for Project 4b. The function of the 
+* program will allow the user to approximate the 
+* distance between two coordinates of two cities. 
+* Moreover allowing the user to get the time it 
+* takes to get from one place to another. 
+* Class: CS 107, Spring 2019
+* Author: Jim Palomo
+* Date: Apr. 11, 2019
+* ---------------------------------------------- **/ 
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,86 +19,80 @@
 const double RADIUS_EARTH = 6368.0; //in km
 
 typedef struct Location_struct {
-    double longitude;
-    double latitude;
-    double elevation;
-    struct Location_struct* next; //pointer to the next Location
+   double longitude;
+   double latitude;
+   double elevation;
+   struct Location_struct* next; //pointer to the next Location
 } Location;
 
 //Location Constructor
 void LocCreate(Location* thisLoc, double thisLong, double thisLat, double thisElev, Location* nextLoc) {
-    thisLoc->longitude = thisLong;
-    thisLoc->latitude = thisLat;
-    thisLoc->elevation = thisElev;
-    thisLoc->next = nextLoc;
+   thisLoc->longitude = thisLong;
+   thisLoc->latitude = thisLat;
+   thisLoc->elevation = thisElev;
+   thisLoc->next = nextLoc;
 }
 
-void LocAdd(Location* headLoc, double newLong, double newLat, double newElev){
-   //DEVELOP FUNCTIONALITY HERE
-    
-    Location* newLocation = (Location*)malloc(sizeof(Location));
-    LocCreate(newLocation, newLong, newLat, newElev, NULL);
+// Function adds a new node to the linked list and adds new data values (longitude, latitude, and elevation)
+void LocAdd(Location* headLoc, double newLong, double newLat, double newElev){    
+   Location* newLocation = (Location*)malloc(sizeof(Location));
+   LocCreate(newLocation, newLong, newLat, newElev, NULL);
  
-    Location* currLocation = headLoc;
-    while (currLocation->next != NULL){
-        currLocation = currLocation->next;
-    }
-    currLocation->next = newLocation;
-    
+   Location* currLocation = headLoc;
+   while (currLocation->next != NULL){
+      currLocation = currLocation->next;
+   }
+   currLocation->next = newLocation;
 }
 
 int countLocs(Location* headLoc){
-   //DEVELOP FUNCTIONALITY HERE
+   // Sets count to 1 with the head node accounted for
    int count = 1;
    
-   // Transverse Linked List -- Not Finished
-    Location* currLocation = headLoc;
-   //  Location* prevLocation = headLoc; 
-    
+   // Traverses the linked list by starting at the head node 
+   Location* currLocation = headLoc;
+   
+   // Linked list is traversed and nodes are counted through the use of an increment count variable
    while(currLocation->next != NULL) {
-      // prevLocation = currLocation; 
-      // currLocation = currLocation-> next;
       count++;
       currLocation = currLocation -> next;
    }
    
-   // if (prevLocation != NULL) {
-   //    prevLocation->next = NULL;
-   //    count++;
-   // }  
-   
-    return count;
+   return count;
 }
 
+// Function used to print linked lists
 void Location_PrintList(Location* headLoc){
-    Location* currLocation = headLoc;
-    while (currLocation != NULL){
-       printf("%.1lf\n",currLocation->elevation);
-       currLocation = currLocation->next;
-    }
-    printf("\n");
+   Location* currLocation = headLoc;
+    
+   while (currLocation != NULL){
+      printf("%.1lf\n",currLocation->elevation);
+      currLocation = currLocation->next;
+   }
+    
+   printf("\n");
 }
 
+// Finds the max elevation out of each node in a linked list
 double findMaxElev(Location* headLoc){
-   // DEVELOP FUNCTIONALITY HERE
    double max = 0.0;
    
-   // Transverse Linked List -- Not Finished
-    Location* currLocation = headLoc;
+   // Transverse Linked List by starting at head node
+   Location* currLocation = headLoc;
     
+   // Linked List is traversed to find the maximum elevation stored in each node
    while(currLocation != NULL) {
       if(currLocation->elevation > max) {
          max = currLocation->elevation;  
       }
       currLocation = currLocation -> next;
-
    }
    
-    return max;
+   return max;
 }
 
+// Function that calculates for the distance between two points of longitude and latitude
 double LocsToDist(double lat1, double long1, double lat2, double long2){
-   //DEVELOP FUNCTIONALITY HERE
    double d = 0;
    double pi = 3.14;
    
@@ -102,7 +106,7 @@ double LocsToDist(double lat1, double long1, double lat2, double long2){
    return d;
 }
 
-//WRITE THE FUNCTION
+// Function converts the total seconds traveled into its appropriate hours, minutes, and seconds representation
 void convertTime(int totalSeconds, int *hours, int *minutes, int *seconds ) {
  
    *hours = totalSeconds / 3600;  
@@ -111,20 +115,12 @@ void convertTime(int totalSeconds, int *hours, int *minutes, int *seconds ) {
 
    *seconds = totalSeconds - (*hours * 3600) - (*minutes * 60);
    
-   
- 
-
-   
 }
 
 int main() {
    //DEVELOP YOUR OWN TEST CASES HERE
    //DO NOT PASS TEST CASE #1!!! we will use the failed test case to see your output...
    
-   // Location_PrintList( headLoc);
-   
-   // printf("");
-   
-    printf("\n\n");
-    return 0;
+   printf("\n\n");
+   return 0;
 }
