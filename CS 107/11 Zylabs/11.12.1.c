@@ -1,3 +1,12 @@
+/*
+            Find the back of the list
+            start at head
+            loop through list, until…
+            the next Contact points to NULL
+            Go back one Contact, and point it to NULL
+            requires keeping track of the previous Contact
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
