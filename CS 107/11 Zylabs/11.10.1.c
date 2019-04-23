@@ -1,5 +1,3 @@
-// Not Finished
-
 #include <stdio.h>
 #include <stdbool.h>
 
@@ -19,43 +17,99 @@ void printData(int data[], int size) {
     printf("\n");
 }
 
-
 //LEVEL 1
 bool checkData(int data[], int size, int badValue){
    for(int i = 0; i < size; i++) {
       if(data[i] == badValue) {
-         return 1;
+         return false;
       }
    }
-   return 0;
+   return true;
 }
-
 
 //developed for LEVEL 1, and extended in LEVELS 2 and 3
 int fixData(int data[], int size, int badValue){   
+   int i, j;
+
+   int count = 0;
+   
+   for(i = 0; i < size; i++) {
+      if(data[i] == badValue) {
+         count++; 
+      } 
+      if(data[i] == data[i+1]) {
+         return -1;
+      } 
+   }
+   
+   if(count == 0) {
+      return 0; 
+   } 
+   if(data[0] == badValue && data[1] != badValue) {
+      data[0] = data[1];
+   }   
+
+   if(data[size-1] == badValue && data[size-2] != badValue) {
+      data[size-1] = data[size-2];
+   }
+
+
    for(int i = 1; i < size-1; i++) {
       if(data[i] == badValue) {
          data[i] = (data[i-1] + data[i+1]) / 2;
       }
    }
+
+      
+   // if(data[1] == badValue) {
+   //    data[1] = (data[0] + data[2]) / 2;
+   // }
    
-   if(data[0] == badValue) {
-      data[0] = data[1];
-   }
+   // if(data[size] == badValue && data[size-1] != badValue) {
+   //    data[size] == data[size -1]
+   // }
    
-   if(data[size-1] == badValue) {
-      data[size-1] = data[size-2];
+   
+   // if(count == size) {
+   //    return 0;  
+   // } else {
+        
+   // }
+   
+   // Return -1 if badValue is consecutive 
+   // for(int i = 0; i < size; i++) {
+   //    for(int j = i + 1; j < size; j++) {
+   //       if(data[i] == data[j]) {
+   //          return -1;
+   //       }
+   //    }
+   // }
+   
+
+   return count;
+} 
+
+void printStars(int data[], int size, int badValue, char ast[]) {
+   for(int i = 0; i < size; i++) {
+      ast[i] = ' ';  
+   }  
+   
+   if(data[0] == badValue && data[1] != badValue) {
+      ast[0] = '*';
+   }  
+   
+   if(data[size-1] == badValue && data[size-2] != badValue) {
+      ast[size-1] = '*';
    }
    
    for(int i = 0; i < size; i++) {
-      for(int j = i + 1; j < size; j++) {
-         if(data[i] == data[j]) {
-            return -1;
-         }
-      }
+   if(data[i] == badValue && i != size - 1 && i != 1) {
+     ast[i] = '*';
    }
    
-} 
+   }
+   
+}
 
 int main() { 
     
@@ -75,25 +129,51 @@ int main() {
     //DEVELOP YOUR main() CODE HERE
    int check;
    int fix;
+   char star[100];
    
    check = checkData(temps, n, 9999);
    
+   printStars(temps, n, 9999, star);
    
-   if (check == 1) {
+
+   if (check == false) {
       printf("Fixing Faulty Data...\n");
       printf("Fixed Data: \n");
-      fixData(temps, n, 9999);
-   } else if (check == 0) { 
-      printf("No Faulty Data!\n"); 
-   } 
+      // fixData(temps, n, 9999);
    
-   printData(temps, n);
+      int adjacentCheck = fixData(temps, n, 9999);
    
-   int adjacentCheck = fixData(temps, n, 9999);
-   
-   if (adjacentCheck == -1) {
-      printf("Adjacent elements are faulty. Data cannot be fixed!");  
+      if (adjacentCheck == -1) {
+         printf("Adjacent elements are faulty. Data cannot be fixed!");
+         exit(0);
+      
+      }
+      
+   for(int i = 0; i < n; i++) {
+      printf("%-4c ", star[i]);  
    }
+      printData(temps, n);
+
+   } else if (check == true) { 
+         printf("No Faulty Data!\n"); 
+         
+   }
+   
+ 
+ 
+   // printData(temps, n);
+
+   
+   printf("\n");
+   
+   // int adjacentCheck = fixData(temps, n, 9999);
+   
+   // if (adjacentCheck == -1) {
+   //    printf("Adjacent elements are faulty. Data cannot be fixed!");
+   //    return 0;
+   // }
+   
+
    
    
    return 0;
