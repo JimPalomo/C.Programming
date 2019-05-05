@@ -30,7 +30,7 @@ void Node_PrintList(Node* myNode){
    Node* currHead = myNode;
     
    while (currHead != NULL){
-      printf("%d\n", currHead->values);
+      printf("%d\n", currHead->sum);
       currHead = currHead->next;
    }
     
@@ -46,7 +46,7 @@ int main() {
  myNode->next->next->next->next = NULL;
 
 myNode->next->values[3] = 3;
-
+myNode->sum = 7;
 Node_PrintList(myNode);
 
 printf("%d", countNodes(myNode));
