@@ -16,9 +16,11 @@ int main() {
         fscanf(fp, "%s %lf", studentID, &gpa);
         
         if(gpa < 2.0) {
-            printf("%s %d\n", studentID, gpa);
+            printf("%s %lf\n", studentID, gpa);
         }
     }
+
+    fclose(fp);
     
     return 0;
 }
