@@ -9,7 +9,7 @@ int main() {
     
     File *fp;
     
-    fp = fopen("ListGPA", "r");
+    fp = fopen("student.txt", "r");
     
     while(!(feof(fp))) {
         
