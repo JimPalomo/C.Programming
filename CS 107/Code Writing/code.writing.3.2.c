@@ -7,7 +7,7 @@ int main() {
     double gpa = 0.0;
     char studentID[10];
     
-    File *fp;
+    FILE *fp;
     
     fp = fopen("student.txt", "r");
     
@@ -16,7 +16,7 @@ int main() {
         fscanf(fp, "%s %lf", studentID, &gpa);
         
         if(gpa < 2.0) {
-            printf("%s %d", studentID, gpa);
+            printf("%s %d\n", studentID, gpa);
         }
     }
     
