@@ -163,7 +163,7 @@ int main() {
    }
       
    // Scans first 6 lines and places the data in a separate variable
-	fscanf(fp, "%s %s", firstName, lastName);
+   fscanf(fp, "%s %s", firstName, lastName);
    fscanf(fp, "%s %s", raceDate, raceStage);
    fscanf(fp, "%d", &timeInt);
    fscanf(fp, "%s %s %s", temp, temp, temp);    // Sets longitude, latitude, and elevation as a temp variable b/c no functionality is necessary for these strings
