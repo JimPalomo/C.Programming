@@ -220,7 +220,7 @@ int main() {
    totalDPS = regDPS + faultyDPS + 1;  
    
    // Converts time given seconds
-	convertTime((regDPS + faultyDPS) * timeInt, &hours, &mins, &secs);
+   convertTime((regDPS + faultyDPS) * timeInt, &hours, &mins, &secs);
    
    // Displays calculated information
    printf("Rider: %s %s\n", firstName, lastName);
