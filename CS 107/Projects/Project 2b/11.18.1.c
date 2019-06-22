@@ -1,6 +1,6 @@
 /** ------------------------------------------------------
 * This program uses data from the National Academy of  
-* Engineering website  and determines which factors are true 
+* Engineering website and determines which factors are true 
 * based on the hability or inhability of several exoplanets.
 * Class: CS 107, Spring 2019
 * Author: Jim Palomo
