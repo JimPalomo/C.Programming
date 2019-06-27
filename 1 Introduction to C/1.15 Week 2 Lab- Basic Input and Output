@@ -1,0 +1,27 @@
+ /*
+      Create a simple program that reads in current and resistance of a circuit and calculates the voltage across the circuit. Your program should:
+
+      prompt the user to first enter the current measured in the circuit
+      read in the current and store into an appropriate variable
+      prompt the user to enter the resistance of the circuit
+      read in the resistance and store into an appropriate variable
+      calculate the voltage across the circuit (recall this is calculated by multiplying the current by the resistance)
+      display the voltage in the circuit in a readable form with appropriate labels
+*/
+
+#include <stdio.h>
+
+int main(void) {
+   
+   float current;
+   int resistance;
+   
+   printf("Enter the current and resistance measured in the circuit: \n");
+   scanf("%f %d\n", &current, &resistance);
+   printf("The current measured is and the resistance is %f Amps %d Ohms\n", current, resistance);
+   printf("the voltage across the circuit is %lf V\n", current*resistance);
+   
+   return 0;
+   
+}
+
