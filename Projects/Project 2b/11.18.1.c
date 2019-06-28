@@ -67,12 +67,6 @@ bool isItHabitable(double radius, double orbitPer, double temperature, double di
    
 }
 
-//TODO: WRITE THE FUNCTION isItVeryUnhabitable(), 
-//      which takes in identical input argruments 
-//      (numebr, type, etc.) as isItHabitable()
-//      (make sure to include a description similar
-//      to those in the provided code template)
-
 bool isItVeryUnhabitable(double radius, double orbitPer, double temperature, double distance){
    //TODO: write the code to obtain the required functionality for this function
   
@@ -84,13 +78,6 @@ bool isItVeryUnhabitable(double radius, double orbitPer, double temperature, dou
 }
 
 int main() {
-// ~~~~~~~~~~~~~~ START OF PROVIDED TEMPLATE CODE ~~~~~~~~~~~~~~~~~~~`    
-// DO NOT MODIFY THE PROVIDED TEMPLATE CODE
-// instead, add your code in main() below the provided code.
-// The following provided template code...
-//   1) allows the user to enter an integer, np
-//   2) reads in data from a file for np planets
-//   3) stores the planet data in 7 arrays
 
     FILE *inFile = NULL; // File pointer
     const int n = 300;  //max. number of data
@@ -127,11 +114,6 @@ int main() {
     }
     
     fclose(inFile);
-    
-    
-    // ~~~~~~~~~~~~~~ END OF PROVIDED TEMPLATE CODE ~~~~~~~~~~~~~~~~~~~`
-    // **** Enter your code below this comment ****
-    // TODO: implement calculations and functions calls to acheive the required programming tasks
 
    double planetDistToStar[300];
    double planetRadiiMi[300];
