@@ -1,6 +1,7 @@
 /** -----------------------------------------------
 * This program creates a topographic elevation map
-* based on the given data on several hills.
+* based on the given data on several hills. (Note 
+* Scale might be different based on display size)
 * Class: CS 107, Spring 2019
 * Author: Jim Palomo
 * Date: Apr. 2, 2019
