@@ -15,16 +15,16 @@
 #include <math.h>
 #include <string.h>
 
-const double RADIUS_EARTH = 6368.0; //in km
+const double RADIUS_EARTH = 6368.0; // in km
 
 typedef struct Location_struct {
    double longitude;
    double latitude;
    double elevation;
-   struct Location_struct* next; //pointer to the next Location
+   struct Location_struct* next; // pointer to the next Location
 } Location;
 
-//Location Constructor
+// Location Constructor
 void LocCreate(Location* thisLoc, double thisLong, double thisLat, double thisElev, Location* nextLoc) {
    thisLoc->longitude = thisLong;
    thisLoc->latitude = thisLat;
