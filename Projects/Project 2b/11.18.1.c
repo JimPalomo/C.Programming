@@ -7,10 +7,6 @@
 * Date: Mar. 12, 2019
 * -------------------------------------------------------- **/ 
 
-//
-//  TODO: this header, formatting, proper variable names, 
-//        comment functions and main code blocks, etc.
-//
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
