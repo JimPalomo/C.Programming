@@ -211,7 +211,7 @@ int main (void) {
       printf ("\n");
     }
     
-    printf ("*%d students have seats in this arrangement*", takenSeatsComplicated);	// Prints value for the number of taken seats in the complicated seating pattern.
+    printf ("*%d students have seats in this arrangement*\n", takenSeatsComplicated);	// Prints value for the number of taken seats in the complicated seating pattern.
 
 }
   return 0;
